@@ -30,7 +30,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 				return fromResultSet(resultset);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		return null;

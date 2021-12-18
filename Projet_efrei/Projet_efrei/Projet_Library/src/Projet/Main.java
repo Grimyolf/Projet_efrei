@@ -1,17 +1,21 @@
 package Projet;
 
+import java.sql.Date;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 import Projet.Login;
-import Projet.models.Book;
 import Projet.DbConnection;
-import Projet.models.Book;
-import Projet.models.Address;
+import Projet.models.*;
+import Projet.repositories.*;
+import Projet.repositories.Repo_person.Persons;
+import Projet.abstracts.*;
 
 
 public class Main {
 	private static Scanner sc = new Scanner(System.in);
+	
 
 	public static void printSeparator1() {
 		System.out.printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -21,7 +25,7 @@ public class Main {
 		System.out.printf("\n------------------------------------------------------------------------\n");
 	}
 	
-static void login() {             //Connection à un profile Borrower/Clerk/Librarian
+public static boolean login() {             //Connection à un profile Borrower/Clerk/Librarian
 		
 		int login = 0;
 		Scanner x = new Scanner(System.in);
@@ -30,7 +34,7 @@ static void login() {             //Connection à un profile Borrower/Clerk/Libra
 		switch(login) {
 		
 			case 1:
-				printSeparator2();
+				
 				System.out.println("Veuillez vous authentifier :\n");
 				System.out.println("NOM :");
 				Scanner x1 = new Scanner(System.in);
@@ -38,6 +42,25 @@ static void login() {             //Connection à un profile Borrower/Clerk/Libra
 				System.out.println("PASSWORD :");
 				Scanner x2 = new Scanner(System.in);
 				String PWD = x2.next();
+				
+				DbConnection db = new DbConnection();
+				db.initConnection();
+		
+//				try {
+//					
+//					String sql = String.format("Insert into %s(Name, LastName, Password, DateOfBirth, AdressId, Phone, Genre) values(?,?,?,?,?,?,?)", tableName);
+//					
+//						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+//						preparedStatement.setString(2, person.getLastName());
+//						preparedStatement.setString(3, person.getPassword());
+//						
+//						
+//					
+//				} 
+//				catch (SQLException e) {
+//					e.printStackTrace();
+//				}
+				
 			break;
 			case 2:
 				System.out.println("admin");
@@ -48,9 +71,10 @@ static void login() {             //Connection à un profile Borrower/Clerk/Libra
 			default:
 				System.out.println("exit");
 		}
-		
-	}
+		return false;
 
+}
+		
 	public static int scanIdFor(String entity) {
 		printSeparator1();
 		System.out.printf("Search %s by Id:\n", entity);
@@ -72,9 +96,19 @@ static void login() {             //Connection à un profile Borrower/Clerk/Libra
 		
 		login();
 		
-//		try {
-//			ResultSet set = db.executeQuery("SELECT * from BOOK"); /*Appel base Book*\
-//			while (set.next()) {
+		try {
+			ResultSet set = db.executeQuery("SELECT * FROM person");               
+			while (set.next()) {
+				int personId = set.getInt("Id");
+				String firstName = set.getString("first_name");
+				String lastName = set.getString("last_Name");
+				String password = set.getString("password");
+				Date dateOfBirth = set.getDate("date_Of_Birth");
+				int adressId = set.getInt("address_Id");
+				String phone = set.getString("phone_no");
+				String genre = set.getString("genre");
+				System.out.println (new Person(personId, firstName, lastName, password, dateOfBirth, adressId, phone, genre));
+				
 //				int id = set.getInt("Id");
 //				String title = set.getString("title");
 //				String author = set.getString("author");
@@ -82,12 +116,18 @@ static void login() {             //Connection à un profile Borrower/Clerk/Libra
 //				String genre = set.getString("genre");
 //				String is_issued = set.getString("is_issued");
 //				System.out.println(new Book(id, title, author, synopsis, genre, is_issued));
-//			}
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//		
-//	}	
-	}
+			}
+		 }
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		}
+	
+
+
+		
+	
 
 }
 

@@ -52,7 +52,7 @@ public class Repo_person {
 
 		@Override
 		public boolean update(int id, Person person) {
-			String sql = String.format("UPDATE %s SET Name = ?, LastName=? Where Id = ?", tableName);
+			String sql = String.format("UPDATE %s SET Name = ?, LastName = ? Where Id = ?", tableName);
 			try {
 				PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
 				preparedStatement.setString(1, person.getName());
