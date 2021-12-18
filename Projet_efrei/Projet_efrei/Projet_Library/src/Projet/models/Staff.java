@@ -7,16 +7,16 @@ public class Staff {
 	private int desk_no;
 	private int office_no;
 
-	public Staff(String type) {
+	public Staff(Enum type) {
 		this.setType(type);
 	}
 	
-	public Staff(int id, String type, int salary, int desk_no, int office_no) {
+	public Staff(int id, Enum type, Double salary, int desk_no, int office_no) {
 		this(type);
 		this.setId(id);
 		this.setSalary(salary);
 		this.setDesk_no(desk_no);
-		this.setOffice_no(Office_no);
+		this.setOffice_no(office_no);
 	}
 	 ////////////////
 	
@@ -29,20 +29,20 @@ public class Staff {
 	}
 	
 	
-	public int getType () {
+	public Enum getType () {
 		return type;
 	}
 
-	public void setType(int type) {
+	public void setType(Enum type) {
 		this.type = type;
 	}
 	
 	
-	public int getSalary () {
+	public Double getSalary () {
 		return salary;
 	}
 
-	public void setSalary(int salary) {
+	public void setSalary(Double salary) {
 		this.salary = salary;
 	}
 	

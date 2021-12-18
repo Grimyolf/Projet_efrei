@@ -15,9 +15,4 @@ package Projet.models;
 		WESTERN	
 	}
 
-	public enum Type {
-		
-		ADMIN,
-		CLERK,
-		LIBRARIAN
-	}
+	
