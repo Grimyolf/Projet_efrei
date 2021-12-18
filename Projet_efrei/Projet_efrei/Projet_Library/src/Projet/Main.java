@@ -10,7 +10,8 @@ import Projet.DbConnection;
 import Projet.models.*;
 import Projet.repositories.*;
 import Projet.repositories.Repo_person.Persons;
-import Projet.abstracts.*;
+import Projet.abstracts.DAO;
+import Projet.abstracts.DAOImpl;
 
 
 public class Main {
@@ -41,21 +42,16 @@ public static boolean login() {             //Connection à un profile Borrower/C
 				String ID = x1.next();
 				System.out.println("PASSWORD :");
 				Scanner x2 = new Scanner(System.in);
-				String PWD = x2.next();
+				String PWD2 = x2.next();
 				
-				DbConnection db = new DbConnection();
-				db.initConnection();
-		
+				
 //				try {
 //					
 //					String sql = String.format("Insert into %s(Name, LastName, Password, DateOfBirth, AdressId, Phone, Genre) values(?,?,?,?,?,?,?)", tableName);
 //					
 //						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
 //						preparedStatement.setString(2, person.getLastName());
-//						preparedStatement.setString(3, person.getPassword());
-//						
-//						
-//					
+//						preparedStatement.setString(3, person.getPassword());	
 //				} 
 //				catch (SQLException e) {
 //					e.printStackTrace();
@@ -63,13 +59,18 @@ public static boolean login() {             //Connection à un profile Borrower/C
 				
 			break;
 			case 2:
-				System.out.println("admin");
+				System.out.println("Veuillez vous authentifier :\n");
+				System.out.println("PASSWORD :");
+				Scanner x3 = new Scanner(System.in);
+				String PWD3 = x3.next();
+				
 			break;
 			case 3:
-				System.out.println("exit");
+				System.exit(3);
 				break;
 			default:
-				System.out.println("exit");
+				System.exit(0);
+				
 		}
 		return false;
 
@@ -95,6 +96,8 @@ public static boolean login() {             //Connection à un profile Borrower/C
 		System.out.println("Entrez votre choix : ");
 		
 		login();
+		
+
 		
 		try {
 			ResultSet set = db.executeQuery("SELECT * FROM person");               
@@ -122,12 +125,8 @@ public static boolean login() {             //Connection à un profile Borrower/C
 		{
 			e.printStackTrace();
 		}
+		
 		}
 	
-
-
-		
-	
-
 }
 
