@@ -10,6 +10,7 @@ import Projet.DbConnection;
 import Projet.models.*;
 import Projet.repositories.*;
 import Projet.repositories.Repo_person.Persons;
+
 import Projet.abstracts.DAO;
 import Projet.abstracts.DAOImpl;
 
@@ -39,30 +40,17 @@ public static boolean login() {             //Connection à un profile Borrower/C
 				System.out.println("Veuillez vous authentifier :\n");
 				System.out.println("NOM :");
 				Scanner x1 = new Scanner(System.in);
-				String ID = x1.next();
+				String logName = x1.next();
 				System.out.println("PASSWORD :");
 				Scanner x2 = new Scanner(System.in);
-				String PWD2 = x2.next();
-				
-				
-//				try {
-//					
-//					String sql = String.format("Insert into %s(Name, LastName, Password, DateOfBirth, AdressId, Phone, Genre) values(?,?,?,?,?,?,?)", tableName);
-//					
-//						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
-//						preparedStatement.setString(2, person.getLastName());
-//						preparedStatement.setString(3, person.getPassword());	
-//				} 
-//				catch (SQLException e) {
-//					e.printStackTrace();
-//				}
+				String UserPass = x2.next();
 				
 			break;
 			case 2:
 				System.out.println("Veuillez vous authentifier :\n");
 				System.out.println("PASSWORD :");
 				Scanner x3 = new Scanner(System.in);
-				String PWD3 = x3.next();
+				String AuthPass = x3.next();
 				
 			break;
 			case 3:
@@ -81,7 +69,15 @@ public static boolean login() {             //Connection à un profile Borrower/C
 		System.out.printf("Search %s by Id:\n", entity);
 		return sc.nextInt();
 	}
+	
+	public static String scanLastNameFor(String entity) {
+		printSeparator1();
+		System.out.printf("Search %s by LastName:\n", entity);
+		return sc.next();
+	}
 
+	
+	
 	public static void main(String[] args) {
 		
 		DbConnection db = new DbConnection();
@@ -97,28 +93,33 @@ public static boolean login() {             //Connection à un profile Borrower/C
 		
 		login();
 		
+		
+		printSeparator1();
+		
+		Persons persons = new Persons(db);
+		String logName = scanLastNameFor("LAST_NAME");
+		 Person person = persons.getByLastName(logName);
 
+		if ( person == null) {
+			System.out.printf("Non existing User with LastName %s\n", logName);
+		} else {
+			System.out.println(logName);
+		}
+
+		printSeparator1();
 		
 		try {
-			ResultSet set = db.executeQuery("SELECT * FROM person");               
-			while (set.next()) {
-				int personId = set.getInt("Id");
-				String firstName = set.getString("first_name");
-				String lastName = set.getString("last_Name");
-				String password = set.getString("password");
-				Date dateOfBirth = set.getDate("date_Of_Birth");
-				int adressId = set.getInt("address_Id");
-				String phone = set.getString("phone_no");
-				String genre = set.getString("genre");
+			ResultSet resset = db.executeQuery("SELECT * FROM person");               
+			while (resset.next()) {
+				int personId = resset.getInt("Id");
+				String firstName = resset.getString("first_name");
+				String lastName = resset.getString("last_Name");
+				String password = resset.getString("password");
+				Date dateOfBirth = resset.getDate("date_Of_Birth");
+				int adressId = resset.getInt("address_Id");
+				String phone = resset.getString("phone_no");
+				String genre = resset.getString("genre");
 				System.out.println (new Person(personId, firstName, lastName, password, dateOfBirth, adressId, phone, genre));
-				
-//				int id = set.getInt("Id");
-//				String title = set.getString("title");
-//				String author = set.getString("author");
-//				String synopsis = set.getString("synopsis");
-//				String genre = set.getString("genre");
-//				String is_issued = set.getString("is_issued");
-//				System.out.println(new Book(id, title, author, synopsis, genre, is_issued));
 			}
 		 }
 		catch (SQLException e) 
@@ -126,7 +127,7 @@ public static boolean login() {             //Connection à un profile Borrower/C
 			e.printStackTrace();
 		}
 		
-		}
+}
 	
 }
 

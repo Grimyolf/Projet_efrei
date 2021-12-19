@@ -97,6 +97,7 @@ public class Person {
 	public String toString() {
 		return "Book [personId=" + personId + ", name=" + name + ", lastName=" + lastName + ", password=" + password + ", dateOfBirth=" + dateOfBirth +", adressId =" + adressId +", phone=" + phone +", genre=" + genre +"]";
 	}
+ 
 
 }
 

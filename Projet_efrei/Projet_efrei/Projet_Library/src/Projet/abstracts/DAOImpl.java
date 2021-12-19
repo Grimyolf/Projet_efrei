@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import Projet.Main;
 import Projet.DbConnection;
 
 public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
@@ -30,12 +30,26 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 				return fromResultSet(resultset);
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 		}
 		return null;
 	}
 
+	@Override
+	public TEntity getByLastName(String lastname) {
+		try {
+			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s WHERE Last_Name = %s", tableName, lastname));
+			if (resultset.next()) {
+				return fromResultSet(resultset);
+			}
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
 	@Override
 	public ArrayList<TEntity> list() {
 		ArrayList<TEntity> result = new ArrayList<>();
