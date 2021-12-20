@@ -37,9 +37,9 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	}
 
 	@Override
-	public TEntity getByLastName(String lastname) {
+	public TEntity getByLastName(String logName) {
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s WHERE Last_Name = %s", tableName, lastname));
+			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s WHERE LAST_NAME = %s", tableName, logName));
 			if (resultset.next()) {
 				return fromResultSet(resultset);
 			}

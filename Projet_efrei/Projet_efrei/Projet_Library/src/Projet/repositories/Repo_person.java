@@ -8,13 +8,11 @@ import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
 import Projet.models.Person;
 
-public class Repo_person {
+public class Repo_person extends DAOImpl<Person>{
 
 
-	public class Persons extends DAOImpl<Person> {
-
-	public Persons(DbConnection conn) {
-			super(conn, "Persons");
+	public Repo_person(DbConnection conn) {
+			super(conn, "person");
 		}
 
 		@Override
@@ -72,4 +70,4 @@ public class Repo_person {
 		}
 
 }
-}
+
