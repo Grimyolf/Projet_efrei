@@ -10,11 +10,12 @@ import Projet.models.Person;
 
 public class Repo_person extends DAOImpl<Person>{
 
-
+	
 	public Repo_person(DbConnection conn) {
 			super(conn, "person");
 		}
 
+		
 		@Override
 		protected Person fromResultSet(ResultSet set) throws SQLException {
 			int personid = set.getInt("personId");
@@ -67,7 +68,7 @@ public class Repo_person extends DAOImpl<Person>{
 				e1.printStackTrace();
 			}
 			return false;
-		}
-
+		
+	}		
 }
 

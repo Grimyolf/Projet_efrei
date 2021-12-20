@@ -36,12 +36,12 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 		return null;
 	}
 
-	@Override
+	@Override 
 	public TEntity getByLastName(String logName) {
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s WHERE LAST_NAME = %s", tableName, logName));
+			ResultSet resultset = conn.executeQuery(String.format("SELECT LAST_NAME FROM person WHERE EXISTS %s;", logName));
 			if (resultset.next()) {
-				return fromResultSet(resultset);
+				return fromResultSet(resultset);	
 			}
 		} catch (SQLException e) {
 
