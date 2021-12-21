@@ -74,24 +74,7 @@ public class Main {
 //
 //		printSeparator1();
 		
-//		try {
-//			ResultSet resset = db.executeQuery("SELECT * FROM person");               
-//			while (resset.next()) {
-//				int personId = resset.getInt("Id");
-//				String firstName = resset.getString("first_name");
-//				String lastName = resset.getString("last_Name");
-//				String password = resset.getString("password");
-//				Date dateOfBirth = resset.getDate("date_Of_Birth");
-//				int adressId = resset.getInt("address_Id");
-//				String phone = resset.getString("phone_no");
-//				String genre = resset.getString("genre");
-//				System.out.println (new Person(personId, firstName, lastName, password, dateOfBirth, adressId, phone, genre));
-//			}
-//		 }
-//		catch (SQLException e) 
-//		{
-//			e.printStackTrace();
-//		}
+		
 		
 }
 	

@@ -18,15 +18,15 @@ public class Repo_person extends DAOImpl<Person>{
 		
 		@Override
 		protected Person fromResultSet(ResultSet set) throws SQLException {
-			int personid = set.getInt("personId");
-			String name = set.getString("name");
-			String lastName = set.getString("lastName");
+			int id = set.getInt("id");
+			String first_name = set.getString("first_name");
+			String last_Name = set.getString("last_Name");
 			String password = set.getString("password");
-			Date dateOfBirth = set.getDate("dateOfBirth");
-			int adressId = set.getInt("adressId");
-			String phone = set.getString("phone");
+			Date date_Of_Birth = set.getDate("date_Of_Birth");
+			int address_Id = set.getInt("address_Id");
+			String phone_no = set.getString("phone_no");
 			String genre = set.getString("genre");
-			return new Person(personid, name, lastName, password, dateOfBirth, adressId, phone, genre);
+			return new Person(id, first_name, last_Name, password, date_Of_Birth, address_Id, phone_no, genre);
 		}
 
 		@Override
@@ -69,6 +69,29 @@ public class Repo_person extends DAOImpl<Person>{
 			}
 			return false;
 		
-	}		
+	}
+
+
+		@Override
+		public boolean find(int id, Person person, String logName) {
+			String sql = String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%s'", logName);
+		try {
+			PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+			preparedStatement.setString(1, person.getName());
+			preparedStatement.setString(2, person.getLastName());
+			preparedStatement.setString(3, person.getPassword());
+			preparedStatement.setDate(4, person.getDateOfBirth());
+			preparedStatement.setInt(5, person.getAdressId());
+			preparedStatement.setString(6, person.getPhone());
+			preparedStatement.setString(7, person.getGenre());
+			preparedStatement.setInt(3, id);
+			preparedStatement.execute();
+			return true;
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return false;              
+			
+		}
 }
 

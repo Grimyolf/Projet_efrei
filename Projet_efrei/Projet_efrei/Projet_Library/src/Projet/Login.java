@@ -8,12 +8,17 @@ import java.util.Scanner;
 import Projet.Main;
 import Projet.models.Person;
 import Projet.repositories.Repo_person;
+import Projet.switches.AdminSwitch;
+import Projet.switches.BorrowSwitch;
+import Projet.switches.ClerkSwitch;
+import Projet.switches.LibSwitch;
 import Projet.abstracts.DAOImpl;
 import Projet.abstracts.DAO;
 import Projet.DbConnection;
 
 public class Login {
 	
+	private static Scanner sc = new Scanner(System.in);
 	
 	public static void printSeparator1() {  //Print Séparation 1
 		System.out.printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
@@ -23,13 +28,22 @@ public class Login {
 		System.out.printf("\n------------------------------------------------------------------------\n");
 	}
 	
+	public static String scanLastNameFor(String logName) { //Scan de nom dans la base
+		printSeparator2();
+		System.out.printf("Chercher %s by LastName:\n", logName);
+		return sc.nextLine();
+	}
 	 
 	public boolean login() {             //Connection à un profile Borrower/Clerk/Librarian/admin
 			
 			int login, adminlog, borrowlog, clerklog, liblog, profile = 0;
 			Scanner x = new Scanner(System.in);
 			login = x.nextInt();
-			printSeparator2();	
+			printSeparator2();
+			
+			DbConnection db = new DbConnection();
+			db.initConnection();
+			
 			switch(login) {
 			
 				case 1: //LOGIN
@@ -42,12 +56,39 @@ public class Login {
 					Scanner x2 = new Scanner(System.in);
 					System.out.println("PASSWORD :");
 					String UserPass = x2.nextLine();
-				
 					
-					Repo_person repo_person = new Repo_person();
-					repo_person.update(profile, null);
+//					Repo_person repo_person = new Repo_person(db);
+//					Person person = repo_person.getByLastName(logName);
+//
+//					if (person == null) 
+//					{
+//						System.out.printf("Non existing Person with LastName %s\n", logName);
+//					} 
+//					else 
+//					{
+//						System.out.println(person);
+//					}
 					
 					
+//					try {
+//						ResultSet resset = db.executeQuery("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'");               
+//						while (resset.next()) {
+//							int personId = resset.getInt("Id");
+//							String firstName = resset.getString("first_name");
+//							String lastName = resset.getString("last_Name");
+//							String password = resset.getString("password");
+//							java.sql.Date dateOfBirth = resset.getDate("date_Of_Birth");
+//							int adressId = resset.getInt("address_Id");
+//							String phone = resset.getString("phone_no");
+//							String genre = resset.getString("genre");
+//							System.out.println (new Person(personId, firstName, lastName, password, dateOfBirth, adressId, phone, genre));
+//						}
+//					 }
+//					catch (SQLException e) 
+//					{
+//						e.printStackTrace();
+//					}
+//					
 					printSeparator2();
 	//----------------------------------------------------------------------------------------------------------------------------------------------				
 					System.out.println("Veuillez choisir votre profile d'utilisateur : \n\n");
@@ -64,12 +105,11 @@ public class Login {
 						System.out.println(" \n                   ~ ~ ~ Menu principal BORROWER ~ ~ ~ ");
 						printSeparator1();
 						System.out.println("Veuillez choisir l'option à exécuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres emprunté");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres empruntés");
 						printSeparator2();
-						System.out.println("Entrez votre choix : ");
 						
-						
-						borrowlog = x.nextInt();
+						BorrowSwitch borrowswitch = new BorrowSwitch();  //Appel de la méthod borrowswitch
+						borrowswitch.borrowSwitch();
 						break;
 	//----------------------------------------------------------------------------------------------------------------------------------------------					
 					case 2:
@@ -77,12 +117,11 @@ public class Login {
 						System.out.println(" \n                   ~ ~ ~ Menu principal CLERK ~ ~ ~ ");
 						printSeparator1();
 						System.out.println("Veuillez choisir l'option à exécuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres emprunté \n 4- Valider l'emprunt d'un livre pour un client \n 4");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n");
 						printSeparator2();
-						System.out.println("Entrez votre choix : ");
 						
-						
-						clerklog = x.nextInt();
+						ClerkSwitch clerkswitch = new ClerkSwitch();  //Appel de la méthod clerkswitch
+						clerkswitch.clerkSwitch();
 						break;
 	//----------------------------------------------------------------------------------------------------------------------------------------------					
 					case 3:
@@ -90,12 +129,11 @@ public class Login {
 						System.out.println(" \n                   ~ ~ ~ Menu principal LIBRARIAN ~ ~ ~ ");
 						printSeparator1();
 						System.out.println("Veuillez choisir l'option à exécuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres emprunté");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothèque \n 10- Supprimer un livre de la bibliothèque \n 11- Mettre à jour les informations à propos d'un livre" );
 						printSeparator2();
-						System.out.println("Entrez votre choix : ");
 						
-						
-						liblog = x.nextInt();
+						LibSwitch libswitch = new LibSwitch();  //Appel de la méthod libswitch
+						libswitch.libSwitch();
 						break;
 					}
 					break;
@@ -109,33 +147,13 @@ public class Login {
 					System.out.println(" \n                   ~ ~ ~ Menu principal ADMIN ~ ~ ~ ");
 					printSeparator1();
 					System.out.println("Veuillez choisir l'option à exécuter : \n\n");
-					System.out.println(" 1- Ajouter nouveau profile CLERK \n 2- Ajouter un nouveau profile LIBRARIAN \n 3- Voir l'historique d'emprunt de la bibliothèque \n 4- Voir l'inventaire des livres de la bibliothèque");
+					System.out.println(" 1- Ajouter nouveau profile CLERK \n 2- Ajouter un nouveau profile LIBRARIAN \n 3- Voir l'historique d'emprunt des livres de la bibliothèque \n 4- Voir l'inventaire des livres de la bibliothèque");
 					printSeparator2();
-					System.out.println("Entrez votre choix : ");
 					
-					
-					adminlog = x.nextInt();
-					
-					switch(adminlog) {
-					
-						case 1: 
-							System.out.println("ajout clerc");
-							break;
-						
-						case 2: 
-							System.out.println("ajout lib");
-							break;
-							
-						case 3:
-							System.out.println("check issue");
-							break;
-							
-						case 4:
-							System.out.println("check inventory");
-							break;
-							
-					}
+					AdminSwitch adminswitch = new AdminSwitch();
+					adminswitch.adminSwitch();
 				break;
+				
 				case 3: //EXIT
 					System.exit(3);
 					break;
@@ -148,53 +166,4 @@ public class Login {
 	}		
 }
 
-
-//	 public boolean login(Person person) {             //Connection à un profile Borrower/Clerk/Librarian
-//		
-//		int login = 0;
-//		Scanner x = new Scanner(System.in);
-//		login = x.nextInt();
-//			
-//		switch(login) {
-//		
-//			case 1:
-//				
-//				System.out.println("Veuillez vous authentifier :\n");
-//				System.out.println("NOM :");
-//				Scanner x1 = new Scanner(System.in);
-//				String ID = x1.next();
-//				System.out.println("PASSWORD :");
-//				Scanner x2 = new Scanner(System.in);
-//				String PWD = x2.next();
-//				
-//				DbConnection db = new DbConnection();
-//				db.initConnection();
-//		
-//				try {
-//					
-//					String sql = String.format("Insert into %s(Name, LastName, Password, DateOfBirth, AdressId, Phone, Genre) values(?,?,?,?,?,?,?)", tableName);
-//					
-//						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
-//						preparedStatement.setString(2, person.getLastName());
-//						preparedStatement.setString(3, person.getPassword());
-//						
-//						
-//					
-//				} 
-//				catch (SQLException e) {
-//					e.printStackTrace();
-//				}
-//				
-//			break;
-//			case 2:
-//				System.out.println("admin");
-//			break;
-//			case 3:
-//				System.out.println("exit");
-//				break;
-//			default:
-//				System.out.println("exit");
-//		}
-//		return false;
-//}
 	

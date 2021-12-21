@@ -2,6 +2,8 @@ package Projet.abstracts;
 
 import java.util.ArrayList;
 
+import Projet.models.Person;
+
 public interface DAO<TEntity> {
 	/*
 	 * CRUD
@@ -17,4 +19,5 @@ public interface DAO<TEntity> {
 	boolean update(int id, TEntity e);
 	boolean remove(int id);
 	TEntity getByLastName(String logName);
+	boolean find(int id, Person person, String logName);
 }

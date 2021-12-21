@@ -4,53 +4,53 @@ import java.sql.Date;
 
 public class Person {
 	
-	private int personId;
-	private String name;
-	private String lastName;
+	private int id;
+	private String first_name;
+	private String last_Name;
 	private String password;
-	private Date dateOfBirth;
-	private int adressId;
-	private String phone;
+	private Date date_Of_Birth;
+	private int address_Id;
+	private String phone_no;
 	private String genre;
 
-	public Person(String name, String lastName, String password, Date dateOfBirth, int adressId, String phone, String genre) {
-		this.setName(name);
-		this.setLastName(lastName);
+	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_Id, String phone_no, String genre) {
+		this.setName(first_name);
+		this.setLastName(last_Name);
 		this.setPassword(password);
-		this.setDateOfBirth(dateOfBirth);
-		this.setAdressId(adressId);
-		this.setPhone(phone);
+		this.setDateOfBirth(date_Of_Birth);
+		this.setAdressId(address_Id);
+		this.setPhone(phone_no);
 		this.setGenre(genre);
 		
 	}
 
-	public Person (int personid, String name, String lastName, String password, Date dateOfBirth, int adressId, String phone, String genre) {
-		this(name, lastName, password, dateOfBirth, adressId, phone, genre);
-		this.setPersonId(personid);
+	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_Id, String phone_no, String genre) {
+		this(first_name, last_Name, password, date_Of_Birth, address_Id, phone_no, genre);
+		this.setPersonId(id);
 	}
 
 	public int getPersonId() {
-		return personId;
+		return id;
 	}
 
-	public void setPersonId(int personId) {
-		this.personId = personId;
+	public void setPersonId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
-		return name;
+		return first_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String first_name) {
+		this.first_name = first_name;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return last_Name;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setLastName(String last_Name) {
+		this.last_Name = last_Name;
 	}
 
 	public String getPassword() {
@@ -62,27 +62,27 @@ public class Person {
 	}
 	
 	public Date getDateOfBirth() {
-		return dateOfBirth;
+		return date_Of_Birth;
 	}
 
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
+	public void setDateOfBirth(Date date_Of_Birth) {
+		this.date_Of_Birth = date_Of_Birth;
 	}
 	
 	public int getAdressId() {
-		return adressId;
+		return address_Id;
 	}
 
-	public void setAdressId(int adressId) {
-		this.adressId = adressId;
+	public void setAdressId(int address_Id) {
+		this.address_Id = address_Id;
 	}
 	
 	public String getPhone() {
-		return phone;
+		return phone_no;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setPhone(String phone_no) {
+		this.phone_no = phone_no;
 	}
 	
 	public String getGenre() {
@@ -95,7 +95,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Personne : [personId=" + personId + ", name=" + name + ", lastName=" + lastName + ", password=" + password + ", dateOfBirth=" + dateOfBirth +", adressId =" + adressId +", phone=" + phone +", genre=" + genre +"]";
+		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_Id +", phone= " + phone_no +", genre= " + genre +"]";
 	}
  
 

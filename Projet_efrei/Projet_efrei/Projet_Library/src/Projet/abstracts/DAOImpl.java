@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import Projet.Main;
+import Projet.models.Person;
 import Projet.DbConnection;
 
 public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
@@ -21,6 +22,8 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	public abstract boolean add(TEntity e);
 
 	public abstract boolean update(int id, TEntity e);
+	
+	public abstract boolean find(int id, TEntity e, String logName);
 
 	@Override
 	public TEntity getById(int id) {
@@ -39,7 +42,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	@Override 
 	public TEntity getByLastName(String logName) {
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT LAST_NAME FROM person WHERE EXISTS %s;", logName));
+			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'", logName));
 			if (resultset.next()) {
 				return fromResultSet(resultset);	
 			}
