@@ -6,17 +6,17 @@ public class Book {
 	private String author;
 	private String synopsis;
 	private String genre;
-	private String is_issued;
+	private int is_issued;
 
-	public Book(String title, String author, String synopsis, String genre, String is_issued) {
+	public Book(String title, String author, String synopsis, String genre, int is_issued) {
 		this.setTitle(title);
 		this.setAuthor(author);
 		this.setSynopsis(synopsis);
 		this.setGenre(genre);
-		this.setIS_issued(is_issued);
+		this.setIs_issued(is_issued);
 	}
 
-	public Book(int id, String title, String author, String synopsis, String genre, String is_issued) {
+	public Book(int id, String title, String author, String synopsis, String genre, int is_issued) {
 		this(title, author, synopsis, genre, is_issued);
 		this.setId(id);
 	}
@@ -61,17 +61,17 @@ public class Book {
 		this.genre = genre;
 	}
 	
-	public String getIS_issued() {
-		return synopsis;
+	public int getIs_issued() {
+		return is_issued;
 	}
 
-	public void setIS_issued(String is_issued) {
+	public void setIs_issued(int is_issued) {
 		this.is_issued = is_issued;
 	}
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", author=" + author + ", synopsis=" + synopsis + ", genre=" + genre +", disponible =" + is_issued +"]";
+		return "Book [id= " + id + ", title= " + title + ", author= " + author + ", synopsis= " + synopsis + ", genre= " + genre +", disponible= " + is_issued +"]";
 	}
 
 }

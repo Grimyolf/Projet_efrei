@@ -18,6 +18,8 @@ import Projet.DbConnection;
 
 public class Login {
 	
+	public String logName;
+	
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static void printSeparator1() {  //Print Séparation 1
@@ -34,9 +36,10 @@ public class Login {
 		return sc.nextLine();
 	}
 	 
-	public boolean login() {             //Connection à un profile Borrower/Clerk/Librarian/admin
+	public void login() {             //Connection à un profile Borrower/Clerk/Librarian/admin
 			
 			int login, profile = 0;
+			
 			Scanner x = new Scanner(System.in);
 			login = x.nextInt();
 			printSeparator2();
@@ -52,10 +55,10 @@ public class Login {
 					
 					System.out.println("NOM :");
 					Scanner x1 = new Scanner(System.in);
-					String logName = x1.nextLine();
+					logName = x1.next();
 					Scanner x2 = new Scanner(System.in);
 					System.out.println("PASSWORD :");
-					String UserPass = x2.nextLine();
+					String UserPass = x2.next();
 					
 //					Repo_person repo_person = new Repo_person(db);
 //					Person person = repo_person.getByLastName(logName);
@@ -67,26 +70,6 @@ public class Login {
 //					else 
 //					{
 //						System.out.println(person);
-//					}
-					
-					
-//					try {
-//						ResultSet resset = db.executeQuery("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'");               
-//						while (resset.next()) {
-//							int personId = resset.getInt("Id");
-//							String firstName = resset.getString("first_name");
-//							String lastName = resset.getString("last_Name");
-//							String password = resset.getString("password");
-//							java.sql.Date dateOfBirth = resset.getDate("date_Of_Birth");
-//							int adressId = resset.getInt("address_Id");
-//							String phone = resset.getString("phone_no");
-//							String genre = resset.getString("genre");
-//							System.out.println (new Person(personId, firstName, lastName, password, dateOfBirth, adressId, phone, genre));
-//						}
-//					 }
-//					catch (SQLException e) 
-//					{
-//						e.printStackTrace();
 //					}
 //					
 					printSeparator2();
@@ -161,7 +144,7 @@ public class Login {
 					System.exit(0);
 					
 			}
-			return false;
+			
 	
 	}		
 }

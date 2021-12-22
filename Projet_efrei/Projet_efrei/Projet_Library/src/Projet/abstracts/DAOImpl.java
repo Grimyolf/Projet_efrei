@@ -6,15 +6,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import Projet.Main;
 import Projet.models.Person;
+import Projet.abstracts.DAO;
+import Projet.abstracts.DAOImpl;
 import Projet.DbConnection;
 
 public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
-	protected final DbConnection conn;
+	protected static DbConnection DB_CONN;
 	protected final String tableName;
 
-	public DAOImpl(DbConnection conn, String tableName) {
-		this.conn = conn;
+	public DAOImpl(String tableName) {
 		this.tableName = tableName;
+	}
+
+	public static void setDbConnection(DbConnection conn) {
+		DAOImpl.DB_CONN = conn;
 	}
 
 	protected abstract TEntity fromResultSet(ResultSet set) throws SQLException;
@@ -28,7 +33,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	@Override
 	public TEntity getById(int id) {
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s WHERE ID = %d", tableName, id));
+			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM %s WHERE ID = %d", tableName, id));
 			if (resultset.next()) {
 				return fromResultSet(resultset);
 			}
@@ -42,7 +47,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	@Override 
 	public TEntity getByLastName(String logName) {
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'", logName));
+			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'", logName));
 			if (resultset.next()) {
 				return fromResultSet(resultset);	
 			}
@@ -57,7 +62,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	public ArrayList<TEntity> list() {
 		ArrayList<TEntity> result = new ArrayList<>();
 		try {
-			ResultSet resultset = conn.executeQuery(String.format("SELECT * FROM %s", tableName));
+			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM %s", tableName));
 			while (resultset.next()) {
 				result.add(this.fromResultSet(resultset));
 			}
@@ -72,7 +77,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 	public boolean remove(int id) {
 		String sql = String.format("DELETE FROM %s WHERE Id=?;", tableName);
 		try {
-			PreparedStatement preparedStatement = conn.createPreparedStatement(sql);
+			PreparedStatement preparedStatement = DB_CONN.createPreparedStatement(sql);
 			preparedStatement.setInt(1, id);
 			preparedStatement.execute();
 			return true;

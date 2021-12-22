@@ -12,9 +12,14 @@ import Projet.models.Person;
 	
 	public class Addresses extends DAOImpl<Address> {
 
+		private static final Addresses instance = new Addresses();
+
+		public static Addresses getInstance() {
+			return instance;
+		}
 		
-			public Addresses(DbConnection conn) {
-				super(conn, "Address");
+			public Addresses() {
+				super("Address");
 			}
 
 			@Override
@@ -33,7 +38,7 @@ import Projet.models.Person;
 			public boolean add(Address address) {
 				String sql = String.format("Insert into %s(address, address2, district, city, postalCode, country) values(?,?,?,?,?,?)", tableName);
 				try {
-					PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+					PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 					preparedStatement.setString(1, address.getAddress());
 					preparedStatement.setString(2, address.getAddress2());
 					preparedStatement.setString(3, address.getDistrict());
@@ -52,7 +57,7 @@ import Projet.models.Person;
 			public boolean update(int id, Address address) {
 				String sql = String.format("UPDATE %s SET Address=?, Address2=?, District=?, City=?, PostalCode=?, Country=? ) Where Id = ?", tableName);
 				try {
-					PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+					PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 					preparedStatement.setString(1, address.getAddress());
 					preparedStatement.setString(2, address.getAddress2());
 					preparedStatement.setString(3, address.getDistrict());

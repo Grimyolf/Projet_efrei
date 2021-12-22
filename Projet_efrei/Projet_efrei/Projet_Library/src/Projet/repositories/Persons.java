@@ -10,9 +10,14 @@ import Projet.models.Person;
 
 public class Persons extends DAOImpl<Person>{
 
+	private static final Persons instance = new Persons();
+
+	public static Persons getInstance() {
+		return instance;
+	}
 	
-	public Persons(DbConnection conn) {
-			super(conn, "person");
+	public Persons() {
+			super("person");
 		}
 
 		
@@ -33,7 +38,7 @@ public class Persons extends DAOImpl<Person>{
 		public boolean add(Person person) {
 			String sql = String.format("Insert into %s(Name, LastName, Password, DateOfBirth, AdressId, Phone, Genre) values(?,?,?,?,?,?,?)", tableName);
 			try {
-				PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+				PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 				preparedStatement.setString(1, person.getName());
 				preparedStatement.setString(2, person.getLastName());
 				preparedStatement.setString(3, person.getPassword());
@@ -53,7 +58,7 @@ public class Persons extends DAOImpl<Person>{
 		public boolean update(int id, Person person) {
 			String sql = String.format("UPDATE %s SET Name = ?, LastName = ? Where Id = ?", tableName);
 			try {
-				PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+				PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 				preparedStatement.setString(1, person.getName());
 				preparedStatement.setString(2, person.getLastName());
 				preparedStatement.setString(3, person.getPassword());
@@ -76,7 +81,7 @@ public class Persons extends DAOImpl<Person>{
 		public boolean find(int id, Person person, String logName) {
 			String sql = String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%s'", logName);
 		try {
-			PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+			PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 			preparedStatement.setString(1, person.getName());
 			preparedStatement.setString(2, person.getLastName());
 			preparedStatement.setString(3, person.getPassword());

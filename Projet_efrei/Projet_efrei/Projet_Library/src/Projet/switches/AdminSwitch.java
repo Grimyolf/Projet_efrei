@@ -47,9 +47,9 @@ public class AdminSwitch {
 				
 				System.out.println("Entrez le salaire :");
 				salary = x.nextDouble();
-				System.out.println("Entrez le numero de Bureau :");
+				System.out.println("Entrez le numero de Poste :");
 				desk_no = x.nextInt();
-				System.out.println("Entrez le numero de salle :");
+				System.out.println("Entrez le numero de Bureau :");
 				office_no = x.nextInt();
 				
 				Staff newStaff = new Staff(id,type,salary,desk_no,office_no);

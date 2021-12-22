@@ -12,9 +12,14 @@ import Projet.models.Person;
 
 		public class Loans extends DAOImpl<Loan> {
 
+			private static final Loans instance = new Loans();
+
+			public static Loans getInstance() {
+				return instance;
+			}
 			
-				public Loans(DbConnection conn) {
-					super(conn, "Loan");
+				public Loans() {
+					super("Loan");
 				}
 
 				@Override
@@ -33,7 +38,7 @@ import Projet.models.Person;
 				public boolean add(Loan Loan) {
 					String sql = String.format("Insert into %s(borrowerId, bookId, issuerId, issuedDate, receiverId, returnDate) values(?,?,?,?,?,?)", tableName);
 					try {
-						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+						PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 						preparedStatement.setInt(1, Loan.getBorrower_id());
 						preparedStatement.setInt(2, Loan.getBook_id());
 						preparedStatement.setInt(3, Loan.getIssuer_id());
@@ -52,7 +57,7 @@ import Projet.models.Person;
 				public boolean update(int id, Loan Loan) {
 					String sql = String.format("UPDATE %s SET Address=?, Address2=?, District=?, City=?) Where Id = ?", tableName);
 					try {
-						PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+						PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 						preparedStatement.setInt(1, Loan.getBorrower_id());
 						preparedStatement.setInt(2, Loan.getBook_id());
 						preparedStatement.setInt(3, Loan.getIssuer_id());

@@ -10,10 +10,16 @@ import Projet.models.Staff;
 
 public class Staffs extends DAOImpl<Staff> {
 	
-	
-	public Staffs (DbConnection conn) {
-						super(conn, "Staff");
-					}
+	private static final Staffs instance = new Staffs();
+
+	public static Staffs getInstance() {
+		return instance;
+	}
+		
+		public Staffs () 
+		{
+			super("Staff");
+		}
 
 					@Override
 					protected Staff fromResultSet(ResultSet set) throws SQLException {
@@ -30,7 +36,7 @@ public class Staffs extends DAOImpl<Staff> {
 					public boolean add(Staff Staff) {
 						String sql = String.format("Insert into %s(type, salary, desk_no, office_no) values(?,?,?,?)", tableName);
 						try {
-							PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+							PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 							preparedStatement.setString(1, Staff.getType());
 							preparedStatement.setDouble(2, Staff.getSalary());
 							preparedStatement.setInt(3, Staff.getDesk_no());
@@ -47,7 +53,7 @@ public class Staffs extends DAOImpl<Staff> {
 					public boolean update(int id, Staff Staff) {
 						String sql = String.format("UPDATE %s SET Address=?, Address2=?, District=?, City=?) Where Id = ?", tableName);
 						try {
-							PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
+							PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 							preparedStatement.setString(1, Staff.getType());
 							preparedStatement.setDouble(2, Staff.getSalary());
 							preparedStatement.setInt(3, Staff.getDesk_no());
