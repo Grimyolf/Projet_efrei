@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 import Projet.Main;
 import Projet.models.Person;
-import Projet.repositories.Repo_person;
+import Projet.repositories.Persons;
 import Projet.switches.AdminSwitch;
 import Projet.switches.BorrowSwitch;
 import Projet.switches.ClerkSwitch;
@@ -36,7 +36,7 @@ public class Login {
 	 
 	public boolean login() {             //Connection à un profile Borrower/Clerk/Librarian/admin
 			
-			int login, adminlog, borrowlog, clerklog, liblog, profile = 0;
+			int login, profile = 0;
 			Scanner x = new Scanner(System.in);
 			login = x.nextInt();
 			printSeparator2();

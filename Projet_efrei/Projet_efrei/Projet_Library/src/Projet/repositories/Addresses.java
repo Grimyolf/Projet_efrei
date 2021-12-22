@@ -7,15 +7,14 @@ import java.sql.SQLException;
 import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
 import Projet.models.Address;
-
-public class Repo_adresse {
+import Projet.models.Person;
 
 	
 	public class Addresses extends DAOImpl<Address> {
 
 		
 			public Addresses(DbConnection conn) {
-				super(conn, "Addresses");
+				super(conn, "Address");
 			}
 
 			@Override
@@ -69,7 +68,19 @@ public class Repo_adresse {
 				return false;
 			}
 
-		}
+			@Override
+			public boolean find(int id, Person person, String logName) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+			@Override
+			public boolean find(int id, Address e, String logName) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+
+		
 
 	
 }

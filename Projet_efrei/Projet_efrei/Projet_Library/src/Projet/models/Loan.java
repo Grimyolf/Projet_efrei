@@ -1,15 +1,17 @@
 package Projet.models;
 
+import java.sql.Date;
+
 public class Loan {
 	private int id;
 	private int borrower_id;
 	private int book_id;
 	private int issuer_id;
-	private String issued_date;
+	private Date issued_date;
 	private int receiver_id;
-	private String return_date;
+	private Date return_date;
 
-	public Loan(int borrower_id, int book_id, int issuer_id, String issued_date, int receiver_id, String return_date) {
+	public Loan(int borrower_id, int book_id, int issuer_id, Date issued_date, int receiver_id, Date return_date) {
 		this.setBorrower_id(borrower_id);
 		this.setBook_id(book_id);
 		this.setIssuer_id(issuer_id);
@@ -18,7 +20,7 @@ public class Loan {
 		this.setReturn_date(return_date);
 	}
 
-	public Loan(int id, int borrower_id, int book_id, int issuer_id, String issued_date, int receiver_id, String return_date) {
+	public Loan(int id, int borrower_id, int book_id, int issuer_id, Date issued_date, int receiver_id, Date return_date) {
 		this(borrower_id, book_id, issuer_id, issued_date, receiver_id, return_date);
 		this.setId(id);
 	}
@@ -61,11 +63,11 @@ public class Loan {
 	}
 	
 	
-	public String getIssued_date() {
+	public Date getIssued_date() {
 		return issued_date;
 	}
 
-	public void setIssued_date(String issued_date) {
+	public void setIssued_date(Date issued_date) {
 		this.issued_date = issued_date;
 	}
 	
@@ -79,18 +81,18 @@ public class Loan {
 	}
 	
 	
-	public String getReturn_date() {
+	public Date getReturn_date() {
 		return return_date;
 	}
 
-	public void setReturn_date(String return_date) {
+	public void setReturn_date(Date return_date) {
 		this.return_date = return_date;
 	}
 
 
 	@Override
 	public String toString() {
-		return "Loan [id=" + id + ", borrower=" + borrower_id + ", book=" + book_id + ", issuer=" + issuer_id + ", date="+ return_date+ "]";
+		return "Loan [id= " + id + ", borrower= " + borrower_id + ", book= " + book_id + ", issuer= " + issuer_id + ", date= "+ return_date + "]";
 	}
 
 }

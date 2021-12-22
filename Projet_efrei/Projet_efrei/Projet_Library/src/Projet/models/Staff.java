@@ -2,17 +2,20 @@ package Projet.models;
 
 public class Staff {
 	private int id;
-	private Enum type;
+	private String type;
 	private Double salary;
 	private int desk_no;
 	private int office_no;
 
-	public Staff(Enum type) {
+	public Staff(String type, Double salary, int desk_no, int office_no) {
 		this.setType(type);
+		this.setSalary(salary);
+		this.setDesk_no(desk_no);
+		this.setOffice_no(office_no);
 	}
 	
-	public Staff(int id, Enum type, Double salary, int desk_no, int office_no) {
-		this(type);
+	public Staff(int id, String type, Double salary, int desk_no, int office_no) {
+		this.setType(type);
 		this.setId(id);
 		this.setSalary(salary);
 		this.setDesk_no(desk_no);
@@ -29,11 +32,11 @@ public class Staff {
 	}
 	
 	
-	public Enum getType () {
+	public String getType () {
 		return type;
 	}
 
-	public void setType(Enum type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 	

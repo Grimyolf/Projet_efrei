@@ -6,9 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
 import Projet.Main;
-import Projet.models.Person;
-import Projet.repositories.Repo_person;
+import Projet.repositories.Persons;
+import Projet.repositories.Staffs;
 import Projet.switches.BorrowSwitch;
+import Projet.models.*;
 import Projet.abstracts.DAOImpl;
 import Projet.abstracts.DAO;
 import Projet.DbConnection;
@@ -25,19 +26,41 @@ public class AdminSwitch {
 	
 	public void adminSwitch() {
 		
-		int adminlog = 0;
+		DbConnection db = new DbConnection();
+		db.initConnection();
+		
+		int id = 0, adminlog = 0;
 		String searchBook;
+		String type = "CLERK";
+		Double salary;
+		int desk_no, office_no;
 		Scanner x = new Scanner(System.in);
 		
 		System.out.println("Entrez votre choix : ");
-		
-		
 		adminlog = x.nextInt();
+		
+		Staffs staffs = new Staffs(db);
 		
 		switch(adminlog) {
 		
 			case 1: 
-				System.out.println("ajout clerc");
+				
+				System.out.println("Entrez le salaire :");
+				salary = x.nextDouble();
+				System.out.println("Entrez le numero de Bureau :");
+				desk_no = x.nextInt();
+				System.out.println("Entrez le numero de salle :");
+				office_no = x.nextInt();
+				
+				Staff newStaff = new Staff(id,type,salary,desk_no,office_no);
+			
+				if(staffs.add(newStaff)) 
+				{
+					System.out.println("Clerk added successfully");
+		     	}
+			
+				
+				//AJOUT CLERK
 				break;
 			
 			case 2: 

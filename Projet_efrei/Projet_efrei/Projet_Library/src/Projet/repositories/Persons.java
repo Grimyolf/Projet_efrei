@@ -8,10 +8,10 @@ import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
 import Projet.models.Person;
 
-public class Repo_person extends DAOImpl<Person>{
+public class Persons extends DAOImpl<Person>{
 
 	
-	public Repo_person(DbConnection conn) {
+	public Persons(DbConnection conn) {
 			super(conn, "person");
 		}
 

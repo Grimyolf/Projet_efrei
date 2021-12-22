@@ -5,37 +5,36 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
+import Projet.models.Person;
 import Projet.models.Staff;
 
-public class Repo_staff {
+public class Staffs extends DAOImpl<Staff> {
 	
-	public class Staffs	 extends DAOImpl<Staff> {
-
-				
-					public Staffs(DbConnection conn) {
-						super(conn, "Loans");
+	
+	public Staffs (DbConnection conn) {
+						super(conn, "Staff");
 					}
 
 					@Override
 					protected Staff fromResultSet(ResultSet set) throws SQLException {
-						int staffId = set.getInt("staffId");
+						int id = set.getInt("id");
 						String type = set.getString("type");
-						String salary = set.getString("salary");
-						String desk = set.getString("desk");
-						String office = set.getString("office");
+						Double salary = set.getDouble("salary");
+						int desk_no = set.getInt("desk_no");
+						int office_no = set.getInt("office_no");
 						
-						return new Loan(staffId, type, salary, desk, office);
+						return new Staff(id, type, salary, desk_no, office_no);
 					}
 
 					@Override
 					public boolean add(Staff Staff) {
-						String sql = String.format("Insert into %s(type, salary, desk, office) values(?,?,?,?)", tableName);
+						String sql = String.format("Insert into %s(type, salary, desk_no, office_no) values(?,?,?,?)", tableName);
 						try {
 							PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
 							preparedStatement.setString(1, Staff.getType());
-							preparedStatement.setString(2, Staff.getSalary());
-							preparedStatement.setString(3, Staff.getDesk());
-							preparedStatement.setString(4, Staff.getOffice());
+							preparedStatement.setDouble(2, Staff.getSalary());
+							preparedStatement.setInt(3, Staff.getDesk_no());
+							preparedStatement.setInt(4, Staff.getOffice_no());
 							preparedStatement.execute();
 							return true;
 						} catch (SQLException e1) {
@@ -50,9 +49,9 @@ public class Repo_staff {
 						try {
 							PreparedStatement preparedStatement = this.conn.createPreparedStatement(sql);
 							preparedStatement.setString(1, Staff.getType());
-							preparedStatement.setString(2, Staff.getSalary());
-							preparedStatement.setString(3, Staff.getDesk());
-							preparedStatement.setString(4, Staff.getOffice());
+							preparedStatement.setDouble(2, Staff.getSalary());
+							preparedStatement.setInt(3, Staff.getDesk_no());
+							preparedStatement.setInt(4, Staff.getOffice_no());
 							preparedStatement.setInt(5, id);
 							preparedStatement.execute();
 							return true;
@@ -62,5 +61,18 @@ public class Repo_staff {
 						return false;
 					}
 
+					@Override
+					public boolean find(int id, Person person, String logName) {
+						// TODO Auto-generated method stub
+						return false;
+					}
+
+					@Override
+					public boolean find(int id, Staff staff, String logName) {
+						// TODO Auto-generated method stub
+						return false;
+					}
+
+
 				}
-}
+

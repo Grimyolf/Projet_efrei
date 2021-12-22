@@ -7,15 +7,13 @@ import java.sql.SQLException;
 import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
 import Projet.models.Book;
-
-public class Repo_book {
-	
+import Projet.models.Person;
 	
 
 	public class Books extends DAOImpl<Book> {
 
-		public Books(DbConnection conn) {
-			super(conn, "Books");
+		public Books (DbConnection conn) {
+			super(conn, "Book");
 		}
 
 		@Override
@@ -66,6 +64,18 @@ public class Repo_book {
 			return false;
 		}
 
-	}
+		@Override
+		public boolean find(int id, Person person, String logName) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean find(int id, Book e, String logName) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+	
 
 }
