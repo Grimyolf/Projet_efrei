@@ -18,7 +18,15 @@ import Projet.DbConnection;
 
 public class Login {
 	
-	public String logName;
+	String logName;
+	
+	public void setName(String logName) {
+		this.logName = logName;
+	}
+	public String getlogName() {
+		return logName;
+	}
+	
 	
 	private static Scanner sc = new Scanner(System.in);
 	

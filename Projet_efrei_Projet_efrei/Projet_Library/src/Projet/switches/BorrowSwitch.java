@@ -31,8 +31,6 @@ public class BorrowSwitch {
 		DbConnection db = new DbConnection();
 		db.initConnection();
 		
-		
-		
 		int borrowlog = 0;
 		String searchBook;
 		Scanner x = new Scanner(System.in);
@@ -66,9 +64,7 @@ public class BorrowSwitch {
 			break;
 			
 		case 2:
-			Login log = new Login();
-			String logName = log.logName;
-			
+			Login logName = new Login();
 			try {
 				ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName +"%'");               
 				while (set.next()) {
