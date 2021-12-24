@@ -77,26 +77,26 @@ public class Persons extends DAOImpl<Person>{
 	}
 
 
-		@Override
-		public boolean find(int id, Person person, String logName) {
-			String sql = String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%s'", logName);
-		try {
-			PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
-			preparedStatement.setString(1, person.getName());
-			preparedStatement.setString(2, person.getLastName());
-			preparedStatement.setString(3, person.getPassword());
-			preparedStatement.setDate(4, person.getDateOfBirth());
-			preparedStatement.setInt(5, person.getAdressId());
-			preparedStatement.setString(6, person.getPhone());
-			preparedStatement.setString(7, person.getGenre());
-			preparedStatement.setInt(3, id);
-			preparedStatement.execute();
-			return true;
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
-		return false;              
-			
-		}
+//		@Override
+//		public boolean find(int id, Person person, String logName) {
+//			String sql = String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%s'", logName);
+//		try {
+//			PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
+//			preparedStatement.setString(1, person.getName());
+//			preparedStatement.setString(2, person.getLastName());
+//			preparedStatement.setString(3, person.getPassword());
+//			preparedStatement.setDate(4, person.getDateOfBirth());
+//			preparedStatement.setInt(5, person.getAdressId());
+//			preparedStatement.setString(6, person.getPhone());
+//			preparedStatement.setString(7, person.getGenre());
+//			preparedStatement.setInt(3, id);
+//			preparedStatement.execute();
+//			return true;
+//		} catch (SQLException e1) {
+//			e1.printStackTrace();
+//		}
+//		return false;              
+//			
+//		}
 }
 

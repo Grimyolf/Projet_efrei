@@ -34,14 +34,7 @@ public class Main {
 		return sc.nextInt();
 	}
 	
-	public static String scanLastNameFor(String logName) { //Scan de nom dans la base
-		printSeparator2();
-		System.out.printf("Chercher %s by LastName:\n", logName);
-		return sc.nextLine();
-	}
-
-	
-	
+		
 	public static void main(String[] args) {
 		
 		DbConnection db = new DbConnection();
@@ -50,7 +43,7 @@ public class Main {
 		printSeparator1();
 		System.out.println("\n  ~ ~ ~ Bienvenue dans le Système de Gestion de la Bibliothèque ~ ~ ~");
 		printSeparator1();
-		System.out.println("Veuillez choisir l'option à exécuter : \n\n");
+		System.out.println("Veuillez choisir l'option a executer : \n\n");
 		System.out.println(" 1- Login\n 2- Administration\n 3- EXIT\n");
 		
 		System.out.println("Entrez votre choix : ");

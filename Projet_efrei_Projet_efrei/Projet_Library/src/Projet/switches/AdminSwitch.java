@@ -39,7 +39,7 @@ public class AdminSwitch {
 		System.out.println("Entrez votre choix : ");
 		adminlog = x.nextInt();
 		
-		Staffs staffs = new Staffs(db);
+		Staffs staffs = new Staffs();
 		
 		switch(adminlog) {
 		

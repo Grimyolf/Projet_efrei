@@ -28,7 +28,6 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 
 	public abstract boolean update(int id, TEntity e);
 	
-	public abstract boolean find(int id, TEntity e, String logName);
 
 	@Override
 	public TEntity getById(int id) {
@@ -43,24 +42,11 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 		}
 		return null;
 	}
-
-	@Override 
-	public TEntity getByLastName(String logName) {
-		try {
-			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM person WHERE LAST_NAME LIKE '%pouet%'", logName));
-			if (resultset.next()) {
-				return fromResultSet(resultset);	
-			}
-		} catch (SQLException e) {
-
-			e.printStackTrace();
-		}
-		return null;
-	}
 	
 	@Override
 	public ArrayList<TEntity> list() {
 		ArrayList<TEntity> result = new ArrayList<>();
+		
 		try {
 			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM %s", tableName));
 			while (resultset.next()) {

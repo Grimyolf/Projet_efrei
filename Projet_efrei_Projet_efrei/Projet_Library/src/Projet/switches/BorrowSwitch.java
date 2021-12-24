@@ -65,18 +65,20 @@ public class BorrowSwitch {
 			
 		case 2:
 			Login logName = new Login();
+			String logName1 = Login.getLogName();
+			
 			try {
-				ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName +"%'");               
+				ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName1 +"%'");               
 				while (set.next()) {
 					int id = set.getInt("id");
 					String first_name = set.getString("first_name");
 					String last_Name = set.getString("last_Name");
 					String password = set.getString("password");
 					java.sql.Date date_Of_Birth = set.getDate("date_Of_Birth");
-					int address_Id = set.getInt("address_Id");
+					int address_id = set.getInt("address_id");
 					String phone_no = set.getString("phone_no");
 					String genre = set.getString("genre");
-					System.out.println (new Person(id, first_name, last_Name, password, date_Of_Birth, address_Id, phone_no, genre));
+					System.out.println (new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no, genre));
 				}
 			 }
 			catch (SQLException e) 

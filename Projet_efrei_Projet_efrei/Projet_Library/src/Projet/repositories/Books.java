@@ -72,18 +72,4 @@ import Projet.repositories.Books;
 			return false;
 		}
 
-		@Override
-		public boolean find(int id, Person person, String logName) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-		@Override
-		public boolean find(int id, Book e, String logName) {
-			// TODO Auto-generated method stub
-			return false;
-		}
-
-	
-
 }

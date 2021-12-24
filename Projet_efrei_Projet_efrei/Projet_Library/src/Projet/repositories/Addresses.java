@@ -72,20 +72,5 @@ import Projet.models.Person;
 				}
 				return false;
 			}
-
-			@Override
-			public boolean find(int id, Person person, String logName) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-			@Override
-			public boolean find(int id, Address e, String logName) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-
-		
-
 	
 }

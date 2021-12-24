@@ -9,23 +9,23 @@ public class Person {
 	private String last_Name;
 	private String password;
 	private Date date_Of_Birth;
-	private int address_Id;
+	private int address_id;
 	private String phone_no;
 	private String genre;
 
-	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_Id, String phone_no, String genre) {
+	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no, String genre) {
 		this.setName(first_name);
 		this.setLastName(last_Name);
 		this.setPassword(password);
 		this.setDateOfBirth(date_Of_Birth);
-		this.setAdressId(address_Id);
+		this.setAdressId(address_id);
 		this.setPhone(phone_no);
 		this.setGenre(genre);
 		
 	}
 
-	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_Id, String phone_no, String genre) {
-		this(first_name, last_Name, password, date_Of_Birth, address_Id, phone_no, genre);
+	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no, String genre) {
+		this(first_name, last_Name, password, date_Of_Birth, address_id, phone_no, genre);
 		this.setPersonId(id);
 	}
 
@@ -70,11 +70,11 @@ public class Person {
 	}
 	
 	public int getAdressId() {
-		return address_Id;
+		return address_id;
 	}
 
-	public void setAdressId(int address_Id) {
-		this.address_Id = address_Id;
+	public void setAdressId(int address_id) {
+		this.address_id = address_id;
 	}
 	
 	public String getPhone() {
@@ -95,7 +95,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_Id +", phone= " + phone_no +", genre= " + genre +"]";
+		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +", genre= " + genre +"]";
 	}
  
 

@@ -67,18 +67,5 @@ public class Staffs extends DAOImpl<Staff> {
 						return false;
 					}
 
-					@Override
-					public boolean find(int id, Person person, String logName) {
-						// TODO Auto-generated method stub
-						return false;
-					}
-
-					@Override
-					public boolean find(int id, Staff staff, String logName) {
-						// TODO Auto-generated method stub
-						return false;
-					}
-
-
-				}
+}
 

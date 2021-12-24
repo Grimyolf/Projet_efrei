@@ -18,6 +18,4 @@ public interface DAO<TEntity> {
 	ArrayList<TEntity> list();
 	boolean update(int id, TEntity e);
 	boolean remove(int id);
-	TEntity getByLastName(String logName);
-	boolean find(int id, Person person, String logName);
 }

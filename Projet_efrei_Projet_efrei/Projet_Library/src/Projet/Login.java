@@ -18,33 +18,28 @@ import Projet.DbConnection;
 
 public class Login {
 	
-	String logName;
+static String logName1;
 	
-	public void setName(String logName) {
-		this.logName = logName;
+	public void setName(String logName1) {
+		this.logName1 = logName1;
 	}
-	public String getlogName() {
-		return logName;
+	public static String getLogName() {
+		return logName1;
 	}
 	
 	
 	private static Scanner sc = new Scanner(System.in);
 	
-	public static void printSeparator1() {  //Print S√©paration 1
+	public static void printSeparator1() {  //Print SÈparation 1
 		System.out.printf("\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n");
 	}
 	
-	public static void printSeparator2() {  //Print S√©paration 2
+	public static void printSeparator2() {  //Print SÈparation 2
 		System.out.printf("\n------------------------------------------------------------------------\n");
 	}
 	
-	public static String scanLastNameFor(String logName) { //Scan de nom dans la base
-		printSeparator2();
-		System.out.printf("Chercher %s by LastName:\n", logName);
-		return sc.nextLine();
-	}
 	 
-	public void login() {             //Connection √† un profile Borrower/Clerk/Librarian/admin
+	public void login() {             //Connection ‡ un profile Borrower/Clerk/Librarian/admin
 			
 			int login, profile = 0;
 			
@@ -63,13 +58,31 @@ public class Login {
 					
 					System.out.println("NOM :");
 					Scanner x1 = new Scanner(System.in);
-					logName = x1.next();
-					Scanner x2 = new Scanner(System.in);
+					logName1 = x1.next();
+					
 					System.out.println("PASSWORD :");
+					Scanner x2 = new Scanner(System.in);
 					String UserPass = x2.next();
 					
-//					Repo_person repo_person = new Repo_person(db);
-//					Person person = repo_person.getByLastName(logName);
+					try {
+					ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName1 +"%' AND Password LIKE '%"+ UserPass +"%'");               
+					while (set.next()) {
+						int id = set.getInt("id");
+						String first_name = set.getString("first_name");
+						String last_Name = set.getString("last_Name");
+						String password = set.getString("password");
+						//java.sql.Date date_Of_Birth = set.getDate("date_Of_Birth");
+						//int address_id = set.getInt("address_id");
+						//String phone_no = set.getString("phone_no");
+						//String genre = set.getString("genre");
+						System.out.println ("\nBienvenue Mr "(new Person(first_name));
+					}
+				 }
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+					System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
+				}
 //
 //					if (person == null) 
 //					{
@@ -95,11 +108,11 @@ public class Login {
 						printSeparator1();
 						System.out.println(" \n                   ~ ~ ~ Menu principal BORROWER ~ ~ ~ ");
 						printSeparator1();
-						System.out.println("Veuillez choisir l'option √† ex√©cuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Acc√©der √† mes informations personnelles \n 3- Afficher la liste de mes livres emprunt√©s");
+						System.out.println("Veuillez choisir l'option ‡†executer : \n\n");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- AccÈder ‡†mes informations personnelles \n 3- Afficher la liste de mes livres empruntÈs");
 						printSeparator2();
 						
-						BorrowSwitch borrowswitch = new BorrowSwitch();  //Appel de la m√©thod borrowswitch
+						BorrowSwitch borrowswitch = new BorrowSwitch();  //Appel de la mÈthod borrowswitch
 						borrowswitch.borrowSwitch();
 						break;
 	//----------------------------------------------------------------------------------------------------------------------------------------------					
@@ -107,11 +120,11 @@ public class Login {
 						printSeparator1();
 						System.out.println(" \n                   ~ ~ ~ Menu principal CLERK ~ ~ ~ ");
 						printSeparator1();
-						System.out.println("Veuillez choisir l'option √† ex√©cuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Acc√©der √† mes informations personnelles \n 3- Afficher la liste des livres emprunt√©s \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- V√©rifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre √† jour le profile d'un client\n");
+						System.out.println("Veuillez choisir l'option ‡†executer : \n\n");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- AccÈder √† mes informations personnelles \n 3- Afficher la liste des livres empruntÈs \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- VÈrifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre ‡ jour le profile d'un client\n");
 						printSeparator2();
 						
-						ClerkSwitch clerkswitch = new ClerkSwitch();  //Appel de la m√©thod clerkswitch
+						ClerkSwitch clerkswitch = new ClerkSwitch();  //Appel de la mÈthod clerkswitch
 						clerkswitch.clerkSwitch();
 						break;
 	//----------------------------------------------------------------------------------------------------------------------------------------------					
@@ -119,11 +132,11 @@ public class Login {
 						printSeparator1();
 						System.out.println(" \n                   ~ ~ ~ Menu principal LIBRARIAN ~ ~ ~ ");
 						printSeparator1();
-						System.out.println("Veuillez choisir l'option √† ex√©cuter : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Acc√©der √† mes informations personnelles \n 3- Afficher la liste des livres emprunt√©s \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- V√©rifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre √† jour le profile d'un client\n 9- Ajouter un nouveau livre dans la biblioth√®que \n 10- Supprimer un livre de la biblioth√®que \n 11- Mettre √† jour les informations √† propos d'un livre" );
+						System.out.println("Veuillez choisir l'option ‡†executer : \n\n");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- AccÈder ‡† mes informations personnelles \n 3- Afficher la liste des livres empruntÈs \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- VÈrifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre ‡ jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothËque \n 10- Supprimer un livre de la bibliothËque \n 11- Mettre ‡ jour les informations ‡ propos d'un livre" );
 						printSeparator2();
 						
-						LibSwitch libswitch = new LibSwitch();  //Appel de la m√©thod libswitch
+						LibSwitch libswitch = new LibSwitch();  //Appel de la mÈthod libswitch
 						libswitch.libSwitch();
 						break;
 					}
@@ -137,8 +150,8 @@ public class Login {
 					printSeparator1();
 					System.out.println(" \n                   ~ ~ ~ Menu principal ADMIN ~ ~ ~ ");
 					printSeparator1();
-					System.out.println("Veuillez choisir l'option √† ex√©cuter : \n\n");
-					System.out.println(" 1- Ajouter nouveau profile CLERK \n 2- Ajouter un nouveau profile LIBRARIAN \n 3- Voir l'historique d'emprunt des livres de la biblioth√®que \n 4- Voir l'inventaire des livres de la biblioth√®que");
+					System.out.println("Veuillez choisir l'option ‡†executer : \n\n");
+					System.out.println(" 1- Ajouter nouveau profile CLERK \n 2- Ajouter un nouveau profile LIBRARIAN \n 3- Voir l'historique d'emprunt des livres de la bibliothËque \n 4- Voir l'inventaire des livres de la bibliothËque");
 					printSeparator2();
 					
 					AdminSwitch adminswitch = new AdminSwitch();
@@ -155,7 +168,8 @@ public class Login {
 			}
 			
 	
-	}		
+	}
+	
 }
 
 	
