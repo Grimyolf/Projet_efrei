@@ -39,18 +39,20 @@ public class AdminSwitch {
 		System.out.println("Entrez votre choix : ");
 		adminlog = x.nextInt();
 		
-		Staffs staffs = new Staffs();
+		Staffs staffs1 = new Staffs();
 		
 		switch(adminlog) {
 		
 			case 1: 
 				
+				Staffs staffs = Staffs.getInstance();
 				System.out.println("Entrez le salaire :");
 				salary = x.nextDouble();
 				System.out.println("Entrez le numero de Poste :");
 				desk_no = x.nextInt();
 				System.out.println("Entrez le numero de Bureau :");
 				office_no = x.nextInt();
+				
 				
 				Staff newStaff = new Staff(id,type,salary,desk_no,office_no);
 			
@@ -59,7 +61,17 @@ public class AdminSwitch {
 					System.out.println("Clerk added successfully");
 		     	}
 			
-				
+				try {
+					ResultSet set = db.executeQuery("SELECT * FROM staff");               
+					while (set.next()) {
+						
+						System.out.println (new Staff(id,type,salary,desk_no,office_no));
+					}
+				 }
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
 				//AJOUT CLERK
 				break;
 			
@@ -68,7 +80,7 @@ public class AdminSwitch {
 				break;
 				
 			case 3:
-				System.out.println("check issue");
+				System.out.println("check issue historic");
 				break;
 				
 			case 4:

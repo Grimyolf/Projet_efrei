@@ -68,7 +68,7 @@ public class BorrowSwitch {
 			String logName1 = Login.getLogName();
 			
 			try {
-				ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName1 +"%'");               
+				ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name = '"+ logName1 +"'");               
 				while (set.next()) {
 					int id = set.getInt("id");
 					String first_name = set.getString("first_name");

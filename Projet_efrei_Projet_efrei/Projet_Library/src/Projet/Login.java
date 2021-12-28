@@ -41,7 +41,7 @@ static String logName1;
 	 
 	public void login() {             //Connection à un profile Borrower/Clerk/Librarian/admin
 			
-			int login, profile = 0;
+			int login, profile, triggerconn = 0;
 			
 			Scanner x = new Scanner(System.in);
 			login = x.nextInt();
@@ -62,10 +62,10 @@ static String logName1;
 					
 					System.out.println("PASSWORD :");
 					Scanner x2 = new Scanner(System.in);
-					String UserPass = x2.next();
+					String UserPass = x2.nextLine();
 					
 					try {
-					ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name LIKE '%"+ logName1 +"%' AND Password LIKE '%"+ UserPass +"%'");               
+					ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name = '"+ logName1 +"' AND password = '"+ UserPass +"'");               
 					while (set.next()) {
 						int id = set.getInt("id");
 						String first_name = set.getString("first_name");
@@ -75,7 +75,8 @@ static String logName1;
 						//int address_id = set.getInt("address_id");
 						//String phone_no = set.getString("phone_no");
 						//String genre = set.getString("genre");
-						System.out.println ("\nBienvenue Mr "(new Person(first_name));
+						System.out.println ("\nBienvenue Mr "+ logName1 +"");
+						triggerconn = 1;
 					}
 				 }
 				catch (SQLException e) 
@@ -83,16 +84,17 @@ static String logName1;
 					e.printStackTrace();
 					System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
 				}
-//
-//					if (person == null) 
-//					{
-//						System.out.printf("Non existing Person with LastName %s\n", logName);
-//					} 
-//					else 
-//					{
-//						System.out.println(person);
-//					}
-//					
+
+					if (triggerconn == 0) 
+					{
+						System.out.printf("Nom d'utilisateur ou Mot de Passe incorrect !");
+						System.exit(login);
+					} 
+					else 
+					{
+						
+					}
+					
 					printSeparator2();
 	//----------------------------------------------------------------------------------------------------------------------------------------------				
 					System.out.println("Veuillez choisir votre profile d'utilisateur : \n\n");
@@ -147,6 +149,30 @@ static String logName1;
 					System.out.println("PASSWORD :");
 					Scanner x3 = new Scanner(System.in);
 					String AuthPass = x3.nextLine();
+					
+					try {
+						ResultSet set = db.executeQuery("SELECT password FROM person WHERE password = '"+ AuthPass +"'" ); //WHERE EXISTS (SELECT id FROM staff WHERE staff.id = person.id)");               
+						while (set.next()) {
+							
+							System.out.println ("\n Connection réussie !");
+							triggerconn = 1;
+						}
+					 }
+					catch (SQLException e) 
+					{
+						e.printStackTrace();
+					}
+
+						if (triggerconn == 0) 
+						{
+							System.out.printf("Mot de Passe incorrect !");
+							System.exit(login);
+						} 
+						else 
+						{
+							
+						}
+					
 					printSeparator1();
 					System.out.println(" \n                   ~ ~ ~ Menu principal ADMIN ~ ~ ~ ");
 					printSeparator1();
