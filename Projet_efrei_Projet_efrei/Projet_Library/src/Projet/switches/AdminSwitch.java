@@ -80,11 +80,47 @@ public class AdminSwitch {
 				break;
 				
 			case 3:
-				System.out.println("check issue historic");
+				System.out.println("\nHistorique d'emprunt de la bibliothèque :\n");
+				try {
+					ResultSet set = db.executeQuery("SELECT * FROM loan");               
+					while (set.next()) {
+						int loan_id = set.getInt("id");
+						int borrower_id = set.getInt("borrower_id");
+						int book_id = set.getInt("book_id");
+						int issuer_id = set.getInt("issuer_id");
+						Date issued_date = set.getDate("issued_date");
+						int receiver_id = set.getInt("receiver_id");
+						Date return_date = set.getDate("return_date");
+						System.out.println (new Loan(loan_id, borrower_id, book_id, issuer_id, issued_date, receiver_id, return_date));
+					}
+				 }
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
+				
 				break;
 				
 			case 4:
-				System.out.println("check inventory");
+				
+				System.out.println("\nInventaire des livres de la bibliothèque :\n");
+				try {
+					ResultSet set = db.executeQuery("SELECT * FROM book");               
+					while (set.next()) {
+						int book_id = set.getInt("id");
+						String title = set.getString("title");
+						String author = set.getString("author");
+						String synopsis = set.getString("synopsis");
+						String genre = set.getString("genre");
+						int is_issued = set.getInt("is_issued");
+						System.out.println (new Book(book_id, title, author, synopsis, genre, is_issued));
+					}
+				 }
+				catch (SQLException e) 
+				{
+					e.printStackTrace();
+				}
+				
 				break;
 				
 		

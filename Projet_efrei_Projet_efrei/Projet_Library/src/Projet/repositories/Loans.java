@@ -24,7 +24,7 @@ import Projet.models.Person;
 
 				@Override
 				protected Loan fromResultSet(ResultSet set) throws SQLException {
-					int id = set.getInt("loan_id");
+					int id = set.getInt("id");
 					int borrower_id = set.getInt("borrower_id");
 					int book_id = set.getInt("book_id");
 					int issuer_id = set.getInt("issuer_id");
@@ -42,9 +42,9 @@ import Projet.models.Person;
 						preparedStatement.setInt(1, Loan.getBorrower_id());
 						preparedStatement.setInt(2, Loan.getBook_id());
 						preparedStatement.setInt(3, Loan.getIssuer_id());
-						preparedStatement.setDate(4, Loan.getIssued_date());
+						preparedStatement.setDate(4, (Date) Loan.getIssued_date());
 						preparedStatement.setInt(5, Loan.getReceiver_id());
-						preparedStatement.setDate(6, Loan.getReturn_date());
+						preparedStatement.setDate(6, (Date) Loan.getReturn_date());
 						preparedStatement.execute();
 						return true;
 					} catch (SQLException e1) {
@@ -61,9 +61,9 @@ import Projet.models.Person;
 						preparedStatement.setInt(1, Loan.getBorrower_id());
 						preparedStatement.setInt(2, Loan.getBook_id());
 						preparedStatement.setInt(3, Loan.getIssuer_id());
-						preparedStatement.setDate(4, Loan.getIssued_date());
+						preparedStatement.setDate(4, (Date) Loan.getIssued_date());
 						preparedStatement.setInt(5, Loan.getReceiver_id());
-						preparedStatement.setDate(6, Loan.getReturn_date());
+						preparedStatement.setDate(6, (Date) Loan.getReturn_date());
 						preparedStatement.setInt(7, id);
 						preparedStatement.execute();
 						return true;

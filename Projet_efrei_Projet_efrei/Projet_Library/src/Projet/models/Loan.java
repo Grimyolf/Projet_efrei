@@ -7,11 +7,11 @@ public class Loan {
 	private int borrower_id;
 	private int book_id;
 	private int issuer_id;
-	private Date issued_date;
+	private java.util.Date issued_date;
 	private int receiver_id;
-	private Date return_date;
+	private java.util.Date return_date;
 
-	public Loan(int borrower_id, int book_id, int issuer_id, Date issued_date, int receiver_id, Date return_date) {
+	public Loan(int borrower_id, int book_id, int issuer_id, java.util.Date issued_date, int receiver_id, java.util.Date return_date) {
 		this.setBorrower_id(borrower_id);
 		this.setBook_id(book_id);
 		this.setIssuer_id(issuer_id);
@@ -20,18 +20,18 @@ public class Loan {
 		this.setReturn_date(return_date);
 	}
 
-	public Loan(int id, int borrower_id, int book_id, int issuer_id, Date issued_date, int receiver_id, Date return_date) {
+	public Loan(int id, int borrower_id, int book_id, int issuer_id, java.util.Date issued_date, int receiver_id, java.util.Date return_date) {
 		this(borrower_id, book_id, issuer_id, issued_date, receiver_id, return_date);
-		this.setId(id);
+		this.setLoanId(id);
 	}
 
 	
 	////////////////////
-	public int getId() {
+	public int getLoanId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setLoanId(int id) {
 		this.id = id;
 	}
 	
@@ -63,11 +63,11 @@ public class Loan {
 	}
 	
 	
-	public Date getIssued_date() {
+	public java.util.Date getIssued_date() {
 		return issued_date;
 	}
 
-	public void setIssued_date(Date issued_date) {
+	public void setIssued_date(java.util.Date issued_date) {
 		this.issued_date = issued_date;
 	}
 	
@@ -81,11 +81,11 @@ public class Loan {
 	}
 	
 	
-	public Date getReturn_date() {
+	public java.util.Date getReturn_date() {
 		return return_date;
 	}
 
-	public void setReturn_date(Date return_date) {
+	public void setReturn_date(java.util.Date return_date) {
 		this.return_date = return_date;
 	}
 

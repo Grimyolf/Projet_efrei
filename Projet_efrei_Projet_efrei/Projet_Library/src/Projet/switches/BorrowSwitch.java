@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.Date;
 import Projet.Main;
 import Projet.models.Book;
+import Projet.models.Loan;
 import Projet.models.Person;
 import Projet.repositories.Persons;
 import Projet.switches.BorrowSwitch;
@@ -88,7 +89,25 @@ public class BorrowSwitch {
 			break;
 			
 		case 3:
-			System.out.println("Book list emprunté");
+			
+			try {
+				ResultSet set = db.executeQuery("SELECT * FROM loan WHERE Last_Name = '"+ logName1 +"'");               
+				while (set.next()) {
+					int id = set.getInt("id");
+					int borrower_id = set.getInt("borrower_id");
+					int book_id = set.getInt("book_id");
+					int issuer_id = set.getInt("issuer_id");
+					Date issued_date = set.getDate("issued_date");
+					int receiver_id = set.getInt("receiver_id");
+					Date return_date = set.getDate("return_date");
+					System.out.println (new Loan(id, borrower_id, book_id, issuer_id, issued_date, receiver_id, return_date));
+				}
+			 }
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+			
 			break;
 			
 		}
