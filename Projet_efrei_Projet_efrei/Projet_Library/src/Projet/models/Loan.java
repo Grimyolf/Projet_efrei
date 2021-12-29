@@ -92,7 +92,7 @@ public class Loan {
 
 	@Override
 	public String toString() {
-		return "Loan [id= " + id + ", borrower= " + borrower_id + ", book= " + book_id + ", issuer= " + issuer_id + ", date= "+ return_date + "]";
+		return "Loan [ID= " + id + ", borrower ID= " + borrower_id + ", book ID= " + book_id + ", issuer ID= " + issuer_id + ", date de retour= "+ return_date + "]";
 	}
 
 }

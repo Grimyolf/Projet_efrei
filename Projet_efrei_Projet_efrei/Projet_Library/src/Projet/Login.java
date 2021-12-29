@@ -75,7 +75,7 @@ static String logName1;
 						//int address_id = set.getInt("address_id");
 						//String phone_no = set.getString("phone_no");
 						//String genre = set.getString("genre");
-						System.out.println ("\nBienvenue Mr "+ logName1 +"");
+						System.out.println ("\nBienvenue Mr ou Mme "+ logName1 +"");
 						triggerconn = 1;
 					}
 				 }
@@ -123,7 +123,7 @@ static String logName1;
 						System.out.println(" \n                   ~ ~ ~ Menu principal CLERK ~ ~ ~ ");
 						printSeparator1();
 						System.out.println("Veuillez choisir l'option à executer : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder Ã  mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n");
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n");
 						printSeparator2();
 						
 						ClerkSwitch clerkswitch = new ClerkSwitch();  //Appel de la méthod clerkswitch
@@ -135,7 +135,7 @@ static String logName1;
 						System.out.println(" \n                   ~ ~ ~ Menu principal LIBRARIAN ~ ~ ~ ");
 						printSeparator1();
 						System.out.println("Veuillez choisir l'option à executer : \n\n");
-						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à  mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothèque \n 10- Supprimer un livre de la bibliothèque \n 11- Mettre à jour les informations à propos d'un livre" );
+						System.out.println(" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothèque \n 10- Supprimer un livre de la bibliothèque \n 11- Mettre à jour les informations à propos d'un livre" );
 						printSeparator2();
 						
 						LibSwitch libswitch = new LibSwitch();  //Appel de la méthod libswitch
@@ -151,10 +151,10 @@ static String logName1;
 					String AuthPass = x3.nextLine();
 					
 					try {
-						ResultSet set = db.executeQuery("SELECT password FROM person WHERE password = '"+ AuthPass +"'" ); //WHERE EXISTS (SELECT id FROM staff WHERE staff.id = person.id)");               
+						ResultSet set = db.executeQuery("SELECT password FROM person WHERE password = '"+ AuthPass +"'"); //WHERE EXISTS (SELECT id FROM staff WHERE type = admin AND person.id = staff.id" );              
 						while (set.next()) {
 							
-							System.out.println ("\n Connection réussie !");
+							System.out.println ("\nConnection réussie !");
 							triggerconn = 1;
 						}
 					 }
@@ -177,7 +177,7 @@ static String logName1;
 					System.out.println(" \n                   ~ ~ ~ Menu principal ADMIN ~ ~ ~ ");
 					printSeparator1();
 					System.out.println("Veuillez choisir l'option à executer : \n\n");
-					System.out.println(" 1- Ajouter nouveau profile CLERK \n 2- Ajouter un nouveau profile LIBRARIAN \n 3- Voir l'historique d'emprunt des livres de la bibliothèque \n 4- Voir l'inventaire des livres de la bibliothèque");
+					System.out.println(" 1- Ajouter un nouveau profil CLERK \n 2- Ajouter un nouveau profil LIBRARIAN \n 3- Voir l'historique d'emprunt des livres de la bibliothèque \n 4- Voir l'inventaire des livres de la bibliothèque");
 					printSeparator2();
 					
 					AdminSwitch adminswitch = new AdminSwitch();

@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import Projet.models.Person;
 
 public interface DAO<TEntity> {
-	/*
-	 * CRUD
-	 * CREATE (ADD)
-	 * RETRIEVE (GET)
-	 * UPDATE (UPDATE)
-	 * DELETE (REMOVE)
-	 */
+	
 	
 	boolean add(TEntity e);
 	TEntity getById(int id);

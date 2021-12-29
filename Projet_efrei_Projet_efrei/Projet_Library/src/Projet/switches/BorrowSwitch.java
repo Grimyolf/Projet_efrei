@@ -41,7 +41,7 @@ public class BorrowSwitch {
 		switch(borrowlog) {
 		
 		case 1:
-			System.out.println("\n Entrez le Titre, Auteur ou Genre que vous recherchez :");
+			System.out.println("Entrez le Titre, Auteur ou Genre que vous recherchez :\n");
 			Scanner x1 = new Scanner(System.in);
 			searchBook = x1.nextLine();
 			
@@ -90,8 +90,11 @@ public class BorrowSwitch {
 			
 		case 3:
 			
+			Login logName2 = new Login();
+			String getName = Login.getLogName();
+			
 			try {
-				ResultSet set = db.executeQuery("SELECT * FROM loan WHERE Last_Name = '"+ logName1 +"'");               
+				ResultSet set = db.executeQuery("SELECT * FROM loan WHERE EXISTS (SELECT id FROM person WHERE Last_Name = '"+ getName +"' AND loan.borrower_id = person.id)");               
 				while (set.next()) {
 					int id = set.getInt("id");
 					int borrower_id = set.getInt("borrower_id");

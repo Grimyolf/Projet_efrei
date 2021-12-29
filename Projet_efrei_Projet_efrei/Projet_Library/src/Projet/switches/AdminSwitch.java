@@ -46,15 +46,18 @@ public class AdminSwitch {
 			case 1: 
 				
 				Staffs staffs = Staffs.getInstance();
-				System.out.println("Entrez le salaire :");
-				salary = x.nextDouble();
-				System.out.println("Entrez le numero de Poste :");
-				desk_no = x.nextInt();
-				System.out.println("Entrez le numero de Bureau :");
-				office_no = x.nextInt();
 				
+//				System.out.println("Entrez le salaire :");
+//				Scanner x1 = new Scanner(System.in);
+//				salary = x1.nextDouble();
+//				System.out.println("Entrez le numero de Poste :");
+//				Scanner x2 = new Scanner(System.in);
+//				desk_no = x2.nextInt();
+//				System.out.println("Entrez le numero de Bureau :");
+//				Scanner x3 = new Scanner(System.in);
+//				office_no = x3.nextInt();
 				
-				Staff newStaff = new Staff(id,type,salary,desk_no,office_no);
+				Staff newStaff = new Staff("Clerck",(double) 40000,8,16);
 			
 				if(staffs.add(newStaff)) 
 				{
@@ -65,7 +68,7 @@ public class AdminSwitch {
 					ResultSet set = db.executeQuery("SELECT * FROM staff");               
 					while (set.next()) {
 						
-						System.out.println (new Staff(id,type,salary,desk_no,office_no));
+						//System.out.println (new Staff(id,type,salary,desk_no,office_no));
 					}
 				 }
 				catch (SQLException e) 

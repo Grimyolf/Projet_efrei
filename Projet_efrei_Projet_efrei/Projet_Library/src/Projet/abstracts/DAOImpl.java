@@ -22,6 +22,7 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 		DAOImpl.DB_CONN = conn;
 	}
 
+	
 	protected abstract TEntity fromResultSet(ResultSet set) throws SQLException;
 
 	public abstract boolean add(TEntity e);
