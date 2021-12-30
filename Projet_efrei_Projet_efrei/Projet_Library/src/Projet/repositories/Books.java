@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import Projet.DbConnection;
 import Projet.abstracts.DAOImpl;
 import Projet.models.Book;
-import Projet.models.Person;
 import Projet.repositories.Books;
 	
 
@@ -39,7 +38,7 @@ import Projet.repositories.Books;
 		public boolean add(Book book) {
 			String sql = String.format("Insert into book(title, author, synopsis, genre, is_issued) values(?,?,?,?,?)");
 			try {
-				PreparedStatement preparedStatement = db.createPreparedStatement(sql);
+				PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 				preparedStatement.setString(1, book.getTitle());
 				preparedStatement.setString(2, book.getAuthor());
 				preparedStatement.setString(3, book.getSynopsis());

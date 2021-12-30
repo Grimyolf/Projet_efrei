@@ -9,15 +9,14 @@ import Projet.Main;
 import Projet.models.Book;
 import Projet.models.Loan;
 import Projet.models.Person;
-import Projet.repositories.Books;
 import Projet.repositories.Persons;
+import Projet.request.RequestBook;
 import Projet.switches.BorrowSwitch;
-import efrei.td6.models.User;
-import efrei.td6.repositories.Users;
 import Projet.abstracts.DAOImpl;
 import Projet.abstracts.DAO;
 import Projet.DbConnection;
 import Projet.Login;
+
 
 public class LibSwitch {
 	
@@ -29,9 +28,12 @@ public class LibSwitch {
 		System.out.printf("\n------------------------------------------------------------------------\n");
 	}
 	
-	DbConnection db = new DbConnection();
+	
 	
 	public void libSwitch() {
+		
+		DbConnection db = new DbConnection();
+		db.initConnection();
 		
 		int liblog = 0;
 		String searchBook;
@@ -134,6 +136,9 @@ public class LibSwitch {
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 9:
 
+RequestBook addbook = new RequestBook();
+addbook.addBook();
+			
 //Books books = Books.getInstance();
 
 //System.out.println("Users");
@@ -145,21 +150,6 @@ public class LibSwitch {
 //if(books.add(newBook)) {
 //	System.out.println("User added successfully");
 //}
-
-System.out.println("Entrez le Titre du livre:\n");
-Scanner x2 = new Scanner(System.in);
-String title = x2.next();
-System.out.println("Entrez l'autheur:\n");
-String author = x2.next();
-System.out.println("Entrez le synopsis:\n");
-String synopsis = x2.next();
-System.out.println("Entrez le genre:\n");
-String genre = x2.next();
-System.out.println("Entrez le statut d'emprunt (par défaut : 0):\n");
-int is_issued = x2.nextInt();
-
-
-
 
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
