@@ -34,7 +34,7 @@ public class Staffs extends DAOImpl<Staff> {
 
 					@Override
 					public boolean add(Staff Staff) {
-						String sql = String.format("Insert into %s(type, salary, desk_no, office_no) values(?,?,?,?)", tableName);
+						String sql = String.format("INSERT INTO staff(type, salary, desk_no, office_no) values(?,?,?,?)");
 						try {
 							PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 							preparedStatement.setString(1, Staff.getType());

@@ -45,24 +45,8 @@ public class AdminSwitch {
 		
 			case 1: 
 				
-				Staffs staffs = Staffs.getInstance();
 				
-//				System.out.println("Entrez le salaire :");
-//				Scanner x1 = new Scanner(System.in);
-//				salary = x1.nextDouble();
-//				System.out.println("Entrez le numero de Poste :");
-//				Scanner x2 = new Scanner(System.in);
-//				desk_no = x2.nextInt();
-//				System.out.println("Entrez le numero de Bureau :");
-//				Scanner x3 = new Scanner(System.in);
-//				office_no = x3.nextInt();
 				
-				Staff newStaff = new Staff("Clerck",(double) 40000,8,16);
-			
-				if(staffs.add(newStaff)) 
-				{
-					System.out.println("Clerk added successfully");
-		     	}
 			
 				try {
 					ResultSet set = db.executeQuery("SELECT * FROM staff");               

@@ -1,5 +1,11 @@
 package Projet.models;
 
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import Projet.DbConnection;
+
 public class Book {
 	private int id;
 	private String title;
@@ -71,7 +77,8 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id= " + id + ", title= " + title + ", author= " + author + ", synopsis= " + synopsis + ", genre= " + genre +", disponible= " + is_issued +"]";
+		return "Livre: [Book_id= " + id + ", Titre= " + title + ", Autheur= " + author + ", Synopsis= " + synopsis + ", Genre= " + genre +", Disponible= " + is_issued +"]";
 	}
 
+		
 }
