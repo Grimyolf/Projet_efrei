@@ -25,6 +25,7 @@ public class Address {
 		this.setId(id);
 	}
 
+	
 	public int getId() {
 		return id;
 	}
@@ -84,7 +85,7 @@ public class Address {
 	
 	@Override
 	public String toString() {
-		return "Book [id =" + id + ", title =" + address + ", author =" + address2 + ", synopsis =" + district + ", city =" + city + ", Postal_Code =" + postal_Code + " country =" + country + "]";
+		return "Addresse [id= " + id + ", Numero= " + address + ", Nom de voie= " + address2 + ", Region= " + district + ", ville= " + city + ", Code Postal= " + postal_Code + " Pays= " + country + "]";
 	}
 
 //	public static class AddressBuilder {

@@ -1,17 +1,14 @@
 package Projet.switches;
 
 import java.util.Scanner;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Date;
-import Projet.Main;
-import Projet.repositories.Persons;
 import Projet.repositories.Staffs;
-import Projet.switches.BorrowSwitch;
+import Projet.request.RequestAddress;
+import Projet.request.RequestPerson;
+import Projet.request.RequestStaff;
 import Projet.models.*;
-import Projet.abstracts.DAOImpl;
-import Projet.abstracts.DAO;
 import Projet.DbConnection;
 
 public class AdminSwitch {
@@ -45,28 +42,20 @@ public class AdminSwitch {
 		
 			case 1: 
 				
+				RequestAddress addaddress = new RequestAddress();
+				addaddress.addAddress();
 				
+				RequestPerson addperson = new RequestPerson();
+				addperson.addPerson();
 				
-			
-				try {
-					ResultSet set = db.executeQuery("SELECT * FROM staff");               
-					while (set.next()) {
-						
-						//System.out.println (new Staff(id,type,salary,desk_no,office_no));
-					}
-				 }
-				catch (SQLException e) 
-				{
-					e.printStackTrace();
-				}
+				RequestStaff addstaff = new RequestStaff();
+				addstaff.addStaff();
+				
+				System.out.println("\n~ ~ ~  Profil ajouté avec succès  ~ ~ ~");
 				//AJOUT CLERK
 				break;
 			
 			case 2: 
-				System.out.println("ajout lib");
-				break;
-				
-			case 3:
 				System.out.println("\nHistorique d'emprunt de la bibliothèque :\n");
 				try {
 					ResultSet set = db.executeQuery("SELECT * FROM loan");               
@@ -85,10 +74,9 @@ public class AdminSwitch {
 				{
 					e.printStackTrace();
 				}
-				
 				break;
 				
-			case 4:
+			case 3:
 				
 				System.out.println("\nInventaire des livres de la bibliothèque :\n");
 				try {
@@ -107,11 +95,7 @@ public class AdminSwitch {
 				{
 					e.printStackTrace();
 				}
-				
-				break;
-				
-		
-			
+				break;														
 		}
 	}
 

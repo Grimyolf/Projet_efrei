@@ -11,21 +11,21 @@ public class Person {
 	private Date date_Of_Birth;
 	private int address_id;
 	private String phone_no;
-	private String genre;
+	
 
-	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no, String genre) {
+	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no) {
 		this.setName(first_name);
 		this.setLastName(last_Name);
 		this.setPassword(password);
 		this.setDateOfBirth(date_Of_Birth);
 		this.setAdressId(address_id);
 		this.setPhone(phone_no);
-		this.setGenre(genre);
+		
 		
 	}
 
-	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no, String genre) {
-		this(first_name, last_Name, password, date_Of_Birth, address_id, phone_no, genre);
+	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no) {
+		this(first_name, last_Name, password, date_Of_Birth, address_id, phone_no);
 		this.setPersonId(id);
 	}
 
@@ -85,17 +85,10 @@ public class Person {
 		this.phone_no = phone_no;
 	}
 	
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
 
 	@Override
 	public String toString() {
-		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +", genre= " + genre +"]";
+		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +"]";
 	}
  
 
