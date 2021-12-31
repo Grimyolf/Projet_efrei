@@ -29,14 +29,14 @@ import Projet.models.Person;
 				String address2 = set.getString("address2");
 				String district = set.getString("district");
 				String city = set.getString("city");
-				String postalCode = set.getString("postalCode");
+				String postalCode = set.getString("postal_Code");
 				String country = set.getString("country");
 				return new Address(id, address, address2, district, city, postalCode, country);
 			}
 
 			@Override
 			public boolean add(Address address) {
-				String sql = String.format("Insert into %s(address, address2, district, city, postalCode, country) values(?,?,?,?,?,?)", tableName);
+				String sql = String.format("Insert into %s(address, address2, district, city, postal_Code, country) values(?,?,?,?,?,?)", tableName);
 				try {
 					PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 					preparedStatement.setString(1, address.getAddress());
@@ -55,7 +55,7 @@ import Projet.models.Person;
 
 			@Override
 			public boolean update(int id, Address address) {
-				String sql = String.format("UPDATE %s SET Address=?, Address2=?, District=?, City=?, PostalCode=?, Country=? ) Where Id = ?", tableName);
+				String sql = String.format("UPDATE %s SET Address=?, Address2=?, District=?, City=?, Postal_Code=?, Country=? ) Where Id = ?", tableName);
 				try {
 					PreparedStatement preparedStatement = this.DB_CONN.createPreparedStatement(sql);
 					preparedStatement.setString(1, address.getAddress());

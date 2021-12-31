@@ -88,7 +88,7 @@ public class Person {
 
 	@Override
 	public String toString() {
-		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +"]";
+		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +"]\n";
 	}
  
 

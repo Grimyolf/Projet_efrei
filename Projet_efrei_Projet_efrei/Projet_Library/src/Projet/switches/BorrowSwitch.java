@@ -78,8 +78,7 @@ public class BorrowSwitch {
 					java.sql.Date date_Of_Birth = set.getDate("date_Of_Birth");
 					int address_id = set.getInt("address_id");
 					String phone_no = set.getString("phone_no");
-					String genre = set.getString("genre");
-					System.out.println (new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no, genre));
+					System.out.println (new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no));
 				}
 			 }
 			catch (SQLException e) 

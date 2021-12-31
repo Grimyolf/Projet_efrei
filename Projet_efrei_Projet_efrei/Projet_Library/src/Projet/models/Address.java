@@ -85,7 +85,7 @@ public class Address {
 	
 	@Override
 	public String toString() {
-		return "Addresse [id= " + id + ", Numero= " + address + ", Nom de voie= " + address2 + ", Region= " + district + ", ville= " + city + ", Code Postal= " + postal_Code + " Pays= " + country + "]";
+		return "Addresse [id= " + id + ", Numero= " + address + ", Nom de voie= " + address2 + ", Region= " + district + ", ville= " + city + ", Code Postal= " + postal_Code + " Pays= " + country + "]\n";
 	}
 
 //	public static class AddressBuilder {

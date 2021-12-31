@@ -8,6 +8,7 @@ import Projet.models.Book;
 import Projet.models.Loan;
 import Projet.models.Person;
 import Projet.request.RequestBook;
+import Projet.request.RequestPerson;
 import Projet.DbConnection;
 import Projet.Login;
 
@@ -71,9 +72,7 @@ public class LibSwitch {
 					java.sql.Date date_Of_Birth = set.getDate("date_Of_Birth");
 					int address_id = set.getInt("address_id");
 					String phone_no = set.getString("phone_no");
-					String genre = set.getString("genre");
-					System.out.println(new Person(id, first_name, last_Name, password, date_Of_Birth, address_id,
-							phone_no, genre));
+					System.out.println(new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -109,7 +108,7 @@ public class LibSwitch {
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 5:
-			System.out.println("Entrez le nom du client à vérifier :");
+			System.out.println(" vérifier age borrower:");
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 6:
@@ -117,26 +116,27 @@ public class LibSwitch {
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 7:
-			System.out.println("Ajouter un nouveau Client");
+			System.out.println("Ajouter un nouveau Borrower");
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 8:
-			System.out.println("Quel est le nom du Client à modifier ?");
+			RequestPerson updateperson = new RequestPerson();
+			updateperson.updatePerson();
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 9:
-
 			RequestBook addbook = new RequestBook();
 			addbook.addBook();
-
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 10:
-			System.out.println("Delete book");
+			RequestBook delbook = new RequestBook();
+			delbook.delBook();
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------		
 		case 11:
-			System.out.println("Update book");
+			RequestBook updatebook = new RequestBook();
+			updatebook.updateBook();
 			break;
 
 		}
