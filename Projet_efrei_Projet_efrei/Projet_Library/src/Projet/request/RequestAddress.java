@@ -23,17 +23,17 @@ public class RequestAddress {
 	    
 	    String sql = ("INSERT INTO address (address, address2, district, city, postal_Code, country) values(?,?,?,?,?,?)");
 	    PreparedStatement ps = db.createPreparedStatement(sql);
-	    System.out.println("\nEntrez le numero de rue de l'adresse:");
+	    System.out.println("\nEntrez le numero de rue:");
 	    ps.setString(1, x2.nextLine());
-	    System.out.println("\nEntrez le nom de la voie de l'adresse:");
+	    System.out.println("\nEntrez le nom de voie de l'adresse:");
 	    ps.setString(2, x2.nextLine());
-	    System.out.println("\nEntrez la region:");
+	    System.out.println("\nEntrez la Region:");
 	    ps.setString(3, x2.nextLine());
-	    System.out.println("\nEntrez la ville:");
+	    System.out.println("\nEntrez la Ville:");
 	    ps.setString(4, x2.nextLine());
-	    System.out.println("\nEntrez le code postal:");
+	    System.out.println("\nEntrez le Code Postal:");
 	    ps.setString(5, x2.nextLine());
-	    System.out.println("\nEntrez le pays:");
+	    System.out.println("\nEntrez le Pays:");
 	    ps.setString(6, x2.nextLine());
 	    ps.execute();
 	    //System.out.println();
