@@ -91,7 +91,7 @@ public class Login {
 				printSeparator1();
 				System.out.println("Veuillez choisir l'option à executer : \n\n");
 				System.out.println(
-						" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres empruntés");
+						" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres empruntés \n 4- Liste des livres non disponible");
 				printSeparator2();
 
 				BorrowSwitch borrowswitch = new BorrowSwitch(); // Appel de la méthod borrowswitch

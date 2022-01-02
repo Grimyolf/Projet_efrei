@@ -27,6 +27,11 @@ public class Book {
 		this.setId(id);
 	}
 
+	public Book(int id, int is_issued) {
+		this.setIs_issued(is_issued);
+		this.setId(id);
+	}
+
 	public int getId() {
 		return id;
 	}

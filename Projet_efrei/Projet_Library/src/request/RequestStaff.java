@@ -39,5 +39,25 @@ public class RequestStaff {
 			
 		}
 
+		
+		public void addBorrow() {
+			
+			try {
+				db.initConnection();	
+				
+				Scanner x2 = new Scanner(System.in);
+			    
+			    String sql = ("INSERT INTO borrower (id) values(?)");
+			    PreparedStatement ps = db.createPreparedStatement(sql);
+			    System.out.println("\nEntrez l'id (Personne) du nouveau Borrower:");
+			    ps.setString(1, x2.nextLine());
+			    ps.execute();
+			    System.out.println("~ ~ ~ Borrower ajouté avec succès uwU ~ ~ ~");
+			}
+				catch (SQLException e)
+				{
+			    e.printStackTrace();
+			    }
+		}
 	}
 

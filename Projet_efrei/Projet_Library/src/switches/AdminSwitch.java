@@ -52,7 +52,7 @@ public class AdminSwitch {
 				addstaff.addStaff();
 				
 				System.out.println("\n~ ~ ~  Profil ajouté avec succès  ~ ~ ~");
-				//AJOUT CLERK
+				//AJOUT CLERK + LIBRARIAN
 				break;
 			
 			case 2: 

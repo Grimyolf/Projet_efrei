@@ -107,6 +107,27 @@ public class BorrowSwitch {
 			
 			break;
 			
+		case 4:
+			
+			System.out.println("~ ~ ~ Liste des livres non disponibles : ~ ~ ~\n");
+			db.initConnection();	
+			try {
+				ResultSet set = db.executeQuery("SELECT * FROM book WHERE is_issued = 1");               
+				while (set.next()) {
+					int id = set.getInt("id");
+					String title = set.getString("title");
+					String author = set.getString("author");
+					String synopsis = set.getString("synopsis");
+					String genre = set.getString("genre");
+					int is_issued = set.getInt("is_issued");
+					System.out.println(new Book(id, title, author, synopsis, genre, is_issued));			
+				}
+			 }
+			catch (SQLException e) 
+			{
+				e.printStackTrace();
+			}
+			break;
 		}
 	}
 

@@ -7,8 +7,11 @@ import java.util.Date;
 import models.Book;
 import models.Loan;
 import models.Person;
+import request.RequestAddress;
 import request.RequestBook;
+import request.RequestLoan;
 import request.RequestPerson;
+import request.RequestStaff;
 import Projet.DbConnection;
 import Projet.Login;
 
@@ -104,19 +107,44 @@ public class LibSwitch {
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 4:
-			System.out.println("Enregistrer emprunt livre client");
+			RequestBook findbook = new RequestBook();
+			findbook.findBook();
+			
+			RequestLoan addloan = new RequestLoan();
+			addloan.addLoan();
+			
+			RequestBook deleteissuedbook = new RequestBook();
+			deleteissuedbook.updateBookIssued();
+			
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 5:
-			System.out.println(" vérifier age borrower:");
+			System.out.println(" W.I.P :");
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 6:
-			System.out.println("Entrez le titre du livre rendu : ");
+			
+			RequestBook findbook2 = new RequestBook();
+			findbook2.findBook();
+			
+			RequestLoan deleteloan = new RequestLoan();
+			deleteloan.deleteLoan();
+			
+			RequestBook deleteissuedbook2 = new RequestBook();
+			deleteissuedbook2.updateBookIssued();
+			
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 7:
-			System.out.println("Ajouter un nouveau Borrower");
+			RequestAddress addaddress = new RequestAddress();
+			addaddress.addAddress();
+			
+			RequestPerson addperson = new RequestPerson();
+			addperson.addPerson();
+			
+			RequestStaff addborrow = new RequestStaff();
+			addborrow.addBorrow();
+			
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 8:

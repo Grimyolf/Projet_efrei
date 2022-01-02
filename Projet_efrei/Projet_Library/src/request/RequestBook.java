@@ -124,4 +124,52 @@ DbConnection db = new DbConnection();
 		    }
 	}
 	
+	public void findBook() {
+		
+		db.initConnection();
+		String searchBook;
+		System.out.println("Entrez le Titre, Auteur ou Genre que vous recherchez :\n");
+		Scanner x1 = new Scanner(System.in);
+		searchBook = x1.nextLine();
+
+		try {
+			ResultSet set = db.executeQuery("SELECT * FROM book WHERE Title LIKE '%" + searchBook
+					+ "%' OR Author LIKE '%" + searchBook + "%' OR Genre LIKE '%" + searchBook + "%'");
+			while (set.next()) {
+				int id = set.getInt("id");
+				String title = set.getString("title");
+				String author = set.getString("author");
+				String synopsis = set.getString("synopsis");
+				String genre = set.getString("genre");
+				int is_issued = set.getInt("is_issued");
+				System.out.println(new Book(id, title, author, synopsis, genre, is_issued));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateBookIssued() {
+
+        db.initConnection();
+
+        try {
+            db.initConnection();
+            Scanner x2 = new Scanner(System.in);
+
+            String sql = ("UPDATE book SET Is_issued=? WHERE Id=? ");
+            PreparedStatement pstate = db.createPreparedStatement(sql);
+            System.out.println("\nEntrez le statut d'emprunt (0 = disponible // 1 = Emprunté) :");
+            pstate.setInt(1, x2.nextInt());
+            System.out.println("\nEntrez l'iD du livre à modifier:");
+            pstate.setInt(2, x2.nextInt());
+            pstate.execute();
+            System.out.println("\n~ ~ ~ Livre modifié avec succès ~ ~ ~");
+        }
+            catch (SQLException e)
+            {
+            e.printStackTrace();
+            }
+    }
+	
 }
