@@ -9,8 +9,8 @@ public class Address {
 	private String postal_Code;
 	private String country;
 
-	//private Address() { }
-	
+	// private Address() { }
+
 	public Address(String address, String address2, String district, String city, String postal_Code, String country) {
 		this.setAddress(address);
 		this.setAddress2(address2);
@@ -20,12 +20,12 @@ public class Address {
 		this.setCountry(country);
 	}
 
-	public Address(int id, String address, String address2, String district, String city, String postal_Code, String country) {
+	public Address(int id, String address, String address2, String district, String city, String postal_Code,
+			String country) {
 		this(address, address2, district, city, postal_Code, country);
 		this.setId(id);
 	}
 
-	
 	public int getId() {
 		return id;
 	}
@@ -57,7 +57,7 @@ public class Address {
 	public void setDistrict(String district) {
 		this.district = district;
 	}
-	
+
 	public String getCity() {
 		return city;
 	}
@@ -65,7 +65,7 @@ public class Address {
 	public void setCity(String city) {
 		this.city = city;
 	}
-	
+
 	public String getPostalCode() {
 		return postal_Code;
 	}
@@ -73,7 +73,7 @@ public class Address {
 	public void setPostalCode(String postal_Code) {
 		this.postal_Code = postal_Code;
 	}
-	
+
 	public String getCountry() {
 		return country;
 	}
@@ -81,35 +81,11 @@ public class Address {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	
-	
+
 	@Override
 	public String toString() {
-		return "Addresse [id= " + id + ", Numero= " + address + ", Nom de voie= " + address2 + ", Region= " + district + ", ville= " + city + ", Code Postal= " + postal_Code + " Pays= " + country + "]\n";
+		return "Addresse [id= " + id + ", Numero= " + address + ", Nom de voie= " + address2 + ", Region= " + district
+				+ ", Ville= " + city + ", Code Postal= " + postal_Code + " Pays= " + country + "]\n";
 	}
 
-//	public static class AddressBuilder {
-//		
-//		private final Address address = new Address();
-//		
-//		public AddressBuilder(String address,  String city, String postal_code, String country) {
-//			
-//		}
-//		
-//		public AddressBuilder setAddress2(String address2) {
-//			this.address.address2 = address2;
-//			return this;
-//		}
-//		
-//		public AddressBuilder setPostal_code(String postal_code) {
-//			this.address.POSTAL_CODE = postal_code;
-//			return this;
-//		}		
-//		
-//		public Address build() {
-//			return address;
-//		} 
-//	
-//	}
-	
 }

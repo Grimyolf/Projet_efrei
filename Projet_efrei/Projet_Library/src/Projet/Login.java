@@ -32,7 +32,7 @@ public class Login {
 
 	public void login() { // Connection à un profile Borrower/Clerk/Librarian/admin
 
-		int login, profile, triggerconn = 0;
+		int login, triggerconn = 0;
 
 		Scanner x = new Scanner(System.in);
 		login = x.nextInt();
@@ -45,86 +45,147 @@ public class Login {
 
 		case 1: // LOGIN
 
-			System.out.println("Veuillez vous authentifier :\n");
-
-			System.out.println("NOM :");
-			Scanner x1 = new Scanner(System.in);
-			logName1 = x1.next();
-
-			System.out.println("PASSWORD :");
-			Scanner x2 = new Scanner(System.in);
-			String UserPass = x2.nextLine();
-
-			try {
-				ResultSet set = db.executeQuery(
-						"SELECT * FROM person WHERE Last_Name = '" + logName1 + "' AND password = '" + UserPass + "'");
-				while (set.next()) 
-				{
-					System.out.println("\nBienvenue Mr ou Mme " + logName1 + "");
-					triggerconn = 1;
-				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-				System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
-			}
-
-			if (triggerconn == 0) {
-				System.out.printf("Nom d'utilisateur ou Mot de Passe incorrect !");
-				System.exit(login);
-			} else {
-
-			}
-
-			printSeparator2();
 //----------------------------------------------------------------------------------------------------------------------------------------------
 			System.out.println("Veuillez choisir votre profile d'utilisateur : \n\n");
-			System.out.println(" 1- BORROWER\n 2- CLERK\n 3- LIBRARIAN\n");
+			System.out.println(" 1- BORROWER\n 2- CLERK\n 3- LIBRARIAN");
+
+			printSeparator2();
 
 			System.out.println("Entrez votre choix : ");
+			int profileChoice = 0;
 
-			profile = x.nextInt();
+			profileChoice = x.nextInt();
 
-			switch (profile) {
+			switch (profileChoice) {
 			case 1:
-				printSeparator1();
-				System.out.println(" \n                   ~ ~ ~ Menu principal BORROWER ~ ~ ~ ");
-				printSeparator1();
-				System.out.println("Veuillez choisir l'option à executer : \n\n");
-				System.out.println(
-						" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres empruntés \n 4- Liste des livres non disponible");
-				printSeparator2();
 
-				BorrowSwitch borrowswitch = new BorrowSwitch(); // Appel de la méthod borrowswitch
-				borrowswitch.borrowSwitch();
+				System.out.println("Veuillez vous authentifier :\n");
+
+				System.out.println("NOM :");
+				Scanner x1 = new Scanner(System.in);
+				logName1 = x1.next();
+
+				System.out.println("PASSWORD :");
+				Scanner x2 = new Scanner(System.in);
+				String UserPass = x2.nextLine();
+
+				try {
+					ResultSet set = db.executeQuery("SELECT * FROM person WHERE Last_Name = '" + logName1
+							+ "' AND password = '" + UserPass + "'");
+					while (set.next()) {
+						System.out.println("\nBienvenue Mr ou Mme " + logName1 + "");
+						triggerconn = 1;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
+				}
+
+				if (triggerconn == 0) {
+					System.out.printf("Nom d'utilisateur ou Mot de Passe incorrect !");
+					System.exit(login);
+				} else {
+
+					printSeparator1();
+					System.out.println(" \n                   ~ ~ ~ Menu principal BORROWER ~ ~ ~ ");
+					printSeparator1();
+					System.out.println("Veuillez choisir l'option à executer : \n\n");
+					System.out.println(
+							" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste de mes livres empruntés \n 4- Liste des livres non disponible");
+					printSeparator2();
+
+					BorrowSwitch borrowswitch = new BorrowSwitch(); // Appel de la méthod borrowswitch
+					borrowswitch.borrowSwitch();
+				}
 				break;
 //----------------------------------------------------------------------------------------------------------------------------------------------
 			case 2:
-				printSeparator1();
-				System.out.println(" \n                   ~ ~ ~ Menu principal CLERK ~ ~ ~ ");
-				printSeparator1();
-				System.out.println("Veuillez choisir l'option à executer : \n\n");
-				System.out.println(
-						" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n");
-				printSeparator2();
 
-				ClerkSwitch clerkswitch = new ClerkSwitch(); // Appel de la méthod clerkswitch
-				clerkswitch.clerkSwitch();
+				System.out.println("Veuillez vous authentifier :\n");
+
+				System.out.println("NOM :");
+				Scanner x3 = new Scanner(System.in);
+				logName1 = x3.next();
+
+				System.out.println("PASSWORD :");
+				Scanner x4 = new Scanner(System.in);
+				String UserPassClerk = x4.nextLine();
+
+				try {
+					ResultSet set = db.executeQuery(
+							"SELECT person.password, person.last_name, staff.type FROM person INNER JOIN staff ON person.id=staff.id WHERE password = '"
+									+ UserPassClerk + "' AND Last_Name = '" + logName1 + "' AND type ='clerk'");
+					while (set.next()) {
+						System.out.println("\nBienvenue Mr ou Mme " + logName1 + "");
+						triggerconn = 1;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
+				}
+
+				if (triggerconn == 0) {
+					System.out.printf("Nom d'utilisateur ou Mot de Passe incorrect !");
+					System.exit(login);
+				} else {
+
+					printSeparator1();
+					System.out.println(" \n                   ~ ~ ~ Menu principal CLERK ~ ~ ~ ");
+					printSeparator1();
+					System.out.println("Veuillez choisir l'option à executer : \n\n");
+					System.out.println(
+							" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n");
+					printSeparator2();
+
+					ClerkSwitch clerkswitch = new ClerkSwitch(); // Appel de la méthod clerkswitch
+					clerkswitch.clerkSwitch();
+				}
 				break;
 //----------------------------------------------------------------------------------------------------------------------------------------------
 			case 3:
-				printSeparator1();
-				System.out.println(" \n                   ~ ~ ~ Menu principal LIBRARIAN ~ ~ ~ ");
-				printSeparator1();
-				System.out.println("Veuillez choisir l'option à executer : \n\n");
-				System.out.println(
-						" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothèque \n 10- Supprimer un livre de la bibliothèque \n 11- Mettre à jour les informations à propos d'un livre");
-				printSeparator2();
 
-				LibSwitch libswitch = new LibSwitch(); // Appel de la méthod libswitch
-				libswitch.libSwitch();
+				System.out.println("Veuillez vous authentifier :\n");
+
+				System.out.println("NOM :");
+				Scanner x5 = new Scanner(System.in);
+				logName1 = x5.next();
+
+				System.out.println("PASSWORD :");
+				Scanner x6 = new Scanner(System.in);
+				String UserPassLib = x6.nextLine();
+
+				try {
+					ResultSet set = db.executeQuery(
+							"SELECT person.password, person.last_name, staff.type FROM person INNER JOIN staff ON person.id=staff.id WHERE password = '"
+									+ UserPassLib + "' AND Last_Name = '" + logName1 + "' AND type ='Librarian'");
+					while (set.next()) {
+						System.out.println("\nBienvenue Mr ou Mme " + logName1 + "");
+						triggerconn = 1;
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+					System.out.println(" //!\\   Utilisateur inconnu   //!\\ ");
+				}
+
+				if (triggerconn == 0) {
+					System.out.printf("Nom d'utilisateur ou Mot de Passe incorrect !");
+					System.exit(login);
+				} else {
+
+					printSeparator1();
+					System.out.println(" \n                   ~ ~ ~ Menu principal LIBRARIAN ~ ~ ~ ");
+					printSeparator1();
+					System.out.println("Veuillez choisir l'option à executer : \n\n");
+					System.out.println(
+							" 1- Chercher un livre par Titre, Auteur ou Genre \n 2- Accéder à mes informations personnelles \n 3- Afficher la liste des livres empruntés \n 4- Enregistrer l'emprunt d'un livre pour un client \n 5- Vérifier l'age d'un client \n 6- Enregistrer le retour d'un livre \n 7- Ajouter un nouveau client \n 8- Mettre à jour le profile d'un client\n 9- Ajouter un nouveau livre dans la bibliothèque \n 10- Supprimer un livre de la bibliothèque \n 11- Mettre à jour les informations à propos d'un livre");
+					printSeparator2();
+
+					LibSwitch libswitch = new LibSwitch(); // Appel de la méthod libswitch
+					libswitch.libSwitch();
+				}
 				break;
 			}
-			break;
+
 //----------------------------------------------------------------------------------------------------------------------------------------------
 		case 2: // ADMIN
 			System.out.println("Veuillez vous authentifier :\n");
@@ -133,7 +194,9 @@ public class Login {
 			String AuthPass = x3.nextLine();
 
 			try {
-				ResultSet set = db.executeQuery("SELECT password FROM person WHERE password = '" + AuthPass + "'");																																																												
+				ResultSet set = db.executeQuery(
+						"SELECT person.password, person.last_name, staff.type FROM person INNER JOIN staff ON person.id=staff.id WHERE password = '"
+								+ AuthPass + "' AND Last_Name = '" + logName1 + "' AND type ='admin'");
 				while (set.next()) {
 
 					System.out.println("\nConnection réussie !");

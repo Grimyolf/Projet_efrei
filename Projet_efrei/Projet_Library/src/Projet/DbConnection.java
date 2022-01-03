@@ -17,7 +17,7 @@ public class DbConnection {
 		try {
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://localhost/lms?user=root&password=root&allowPublicKeyRetrieval=true&useSSL=false");
-			//System.out.println("Connection success");
+			// System.out.println("Connection success");
 
 		} catch (SQLException e) {
 			System.out.printf("SQLException: %s \nSQLState: %s\nVendor Error: %s\n", e.getMessage(), e.getSQLState(),
@@ -29,12 +29,9 @@ public class DbConnection {
 		Statement statement = this.conn.createStatement();
 		return statement.executeQuery(sql);
 	}
-	
+
 	public PreparedStatement createPreparedStatement(String sql) throws SQLException {
 		return this.conn.prepareStatement(sql);
 	}
-	
-	
-	
-	
+
 }

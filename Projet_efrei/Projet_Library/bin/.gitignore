@@ -1,7 +1,6 @@
 /Projet/
-/abstracts/
-/models/
-/module-info.class
-/repositories/
 /request/
+/models/
 /switches/
+/abstracts/
+/repositories/

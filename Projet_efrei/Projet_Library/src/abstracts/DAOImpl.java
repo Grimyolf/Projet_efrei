@@ -22,13 +22,11 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 		DAOImpl.DB_CONN = conn;
 	}
 
-	
 	protected abstract TEntity fromResultSet(ResultSet set) throws SQLException;
 
 	public abstract boolean add(TEntity e);
 
 	public abstract boolean update(int id, TEntity e);
-	
 
 	@Override
 	public TEntity getById(int id) {
@@ -43,11 +41,11 @@ public abstract class DAOImpl<TEntity> implements DAO<TEntity> {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public ArrayList<TEntity> list() {
 		ArrayList<TEntity> result = new ArrayList<>();
-		
+
 		try {
 			ResultSet resultset = DB_CONN.executeQuery(String.format("SELECT * FROM %s", tableName));
 			while (resultset.next()) {

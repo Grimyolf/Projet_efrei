@@ -3,7 +3,7 @@ package models;
 import java.sql.Date;
 
 public class Person {
-	
+
 	private int id;
 	private String first_name;
 	private String last_Name;
@@ -11,20 +11,20 @@ public class Person {
 	private Date date_Of_Birth;
 	private int address_id;
 	private String phone_no;
-	
 
-	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no) {
+	public Person(String first_name, String last_Name, String password, Date date_Of_Birth, int address_id,
+			String phone_no) {
 		this.setName(first_name);
 		this.setLastName(last_Name);
 		this.setPassword(password);
 		this.setDateOfBirth(date_Of_Birth);
 		this.setAdressId(address_id);
 		this.setPhone(phone_no);
-		
-		
+
 	}
 
-	public Person (int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_id, String phone_no) {
+	public Person(int id, String first_name, String last_Name, String password, Date date_Of_Birth, int address_id,
+			String phone_no) {
 		this(first_name, last_Name, password, date_Of_Birth, address_id, phone_no);
 		this.setPersonId(id);
 	}
@@ -60,7 +60,7 @@ public class Person {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public Date getDateOfBirth() {
 		return date_Of_Birth;
 	}
@@ -68,7 +68,7 @@ public class Person {
 	public void setDateOfBirth(Date date_Of_Birth) {
 		this.date_Of_Birth = date_Of_Birth;
 	}
-	
+
 	public int getAdressId() {
 		return address_id;
 	}
@@ -76,7 +76,7 @@ public class Person {
 	public void setAdressId(int address_id) {
 		this.address_id = address_id;
 	}
-	
+
 	public String getPhone() {
 		return phone_no;
 	}
@@ -84,14 +84,12 @@ public class Person {
 	public void setPhone(String phone_no) {
 		this.phone_no = phone_no;
 	}
-	
 
 	@Override
 	public String toString() {
-		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= " + password + ", dateOfBirth= " + date_Of_Birth +", adressId = " + address_id +", phone= " + phone_no +"]\n";
+		return "Personne : [Id= " + id + ", first_name= " + first_name + ", lastName= " + last_Name + ", password= "
+				+ password + ", dateOfBirth= " + date_Of_Birth + ", adressId = " + address_id + ", phone= " + phone_no
+				+ "]\n";
 	}
- 
 
 }
-
-

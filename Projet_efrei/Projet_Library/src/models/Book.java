@@ -63,7 +63,7 @@ public class Book {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	
+
 	public String getGenre() {
 		return genre;
 	}
@@ -71,7 +71,7 @@ public class Book {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	
+
 	public int getIs_issued() {
 		return is_issued;
 	}
@@ -82,8 +82,8 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Livre: [Book_id= " + id + ", Titre= " + title + ", Autheur= " + author + ", Synopsis= " + synopsis + ", Genre= " + genre +", Disponible= " + is_issued +"]";
+		return "Livre: [Book_id= " + id + ", Titre= " + title + ", Autheur= " + author + ", Synopsis= " + synopsis
+				+ ", Genre= " + genre + ", Disponible= " + is_issued + "]";
 	}
 
-		
 }

@@ -75,7 +75,8 @@ public class LibSwitch {
 					java.sql.Date date_Of_Birth = set.getDate("date_Of_Birth");
 					int address_id = set.getInt("address_id");
 					String phone_no = set.getString("phone_no");
-					System.out.println(new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no));
+					System.out.println(
+							new Person(id, first_name, last_Name, password, date_Of_Birth, address_id, phone_no));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -109,13 +110,13 @@ public class LibSwitch {
 		case 4:
 			RequestBook findbook = new RequestBook();
 			findbook.findBook();
-			
+
 			RequestLoan addloan = new RequestLoan();
 			addloan.addLoan();
-			
+
 			RequestBook deleteissuedbook = new RequestBook();
 			deleteissuedbook.updateBookIssued();
-			
+
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 5:
@@ -123,28 +124,28 @@ public class LibSwitch {
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 6:
-			
+
 			RequestBook findbook2 = new RequestBook();
 			findbook2.findBook();
-			
+
 			RequestLoan deleteloan = new RequestLoan();
 			deleteloan.deleteLoan();
-			
+
 			RequestBook deleteissuedbook2 = new RequestBook();
 			deleteissuedbook2.updateBookIssued();
-			
+
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 7:
 			RequestAddress addaddress = new RequestAddress();
 			addaddress.addAddress();
-			
+
 			RequestPerson addperson = new RequestPerson();
 			addperson.addPerson();
-			
+
 			RequestStaff addborrow = new RequestStaff();
 			addborrow.addBorrow();
-			
+
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 		case 8:
