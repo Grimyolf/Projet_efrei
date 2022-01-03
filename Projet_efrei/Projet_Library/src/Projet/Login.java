@@ -195,8 +195,7 @@ public class Login {
 
 			try {
 				ResultSet set = db.executeQuery(
-						"SELECT person.password, person.last_name, staff.type FROM person INNER JOIN staff ON person.id=staff.id WHERE password = '"
-								+ AuthPass + "' AND Last_Name = '" + logName1 + "' AND type ='admin'");
+						"SELECT person.password, staff.type FROM person INNER JOIN staff ON person.id=staff.id WHERE password = '"+ AuthPass +"' AND type ='ADMIN'");
 				while (set.next()) {
 
 					System.out.println("\nConnection réussie !");
@@ -211,7 +210,7 @@ public class Login {
 				System.exit(login);
 			} else {
 
-			}
+			
 
 			printSeparator1();
 			System.out.println(" \n                   ~ ~ ~ Menu principal ADMIN ~ ~ ~ ");
@@ -223,7 +222,7 @@ public class Login {
 
 			AdminSwitch adminswitch = new AdminSwitch();
 			adminswitch.adminSwitch();
-
+			}
 			break;
 
 		case 3: // EXIT
