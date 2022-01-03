@@ -54,7 +54,7 @@ public class BorrowSwitch {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
+			System.exit(0);
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
 		case 2:
@@ -77,6 +77,7 @@ public class BorrowSwitch {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			System.exit(0);
 			break;
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------			
 		case 3:
@@ -102,7 +103,7 @@ public class BorrowSwitch {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-
+			System.exit(0);
 			break;
 
 		case 4:
@@ -123,6 +124,7 @@ public class BorrowSwitch {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+			System.exit(0);
 			break;
 		}
 	}

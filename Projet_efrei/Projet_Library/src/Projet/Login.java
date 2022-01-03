@@ -97,6 +97,7 @@ public class Login {
 					BorrowSwitch borrowswitch = new BorrowSwitch(); // Appel de la méthod borrowswitch
 					borrowswitch.borrowSwitch();
 				}
+				System.exit(0);
 				break;
 //----------------------------------------------------------------------------------------------------------------------------------------------
 			case 2:
@@ -140,6 +141,7 @@ public class Login {
 					ClerkSwitch clerkswitch = new ClerkSwitch(); // Appel de la méthod clerkswitch
 					clerkswitch.clerkSwitch();
 				}
+				System.exit(0);
 				break;
 //----------------------------------------------------------------------------------------------------------------------------------------------
 			case 3:
@@ -183,9 +185,11 @@ public class Login {
 					LibSwitch libswitch = new LibSwitch(); // Appel de la méthod libswitch
 					libswitch.libSwitch();
 				}
+				System.exit(0);
 				break;
+			default: // EXIT
+				System.exit(0);
 			}
-
 //----------------------------------------------------------------------------------------------------------------------------------------------
 		case 2: // ADMIN
 			System.out.println("Veuillez vous authentifier :\n");
@@ -217,7 +221,7 @@ public class Login {
 			printSeparator1();
 			System.out.println("Veuillez choisir l'option à executer : \n\n");
 			System.out.println(
-					" 1- Ajouter un nouveau profil CLERK ou LIBRARIAN \n 2- Voir l'historique d'emprunt des livres de la bibliothèque \n 3- Voir l'inventaire des livres de la bibliothèque");
+					" 1- Ajouter un nouveau profil CLERK, LIBRARIAN ou ADMIN \n 2- Voir l'historique d'emprunt des livres de la bibliothèque \n 3- Voir l'inventaire des livres de la bibliothèque");
 			printSeparator2();
 
 			AdminSwitch adminswitch = new AdminSwitch();
@@ -230,7 +234,7 @@ public class Login {
 			break;
 		default: // EXIT
 			System.exit(0);
-
+			
 		}
 
 	}

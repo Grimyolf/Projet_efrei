@@ -23,9 +23,9 @@ public class RequestPerson {
 
 			String sql = ("Insert into person (First_Name, Last_Name, Password, Date_Of_Birth, Address_Id, Phone_no) values(?,?,?,?,?,?)");
 			PreparedStatement ps = db.createPreparedStatement(sql);
-			System.out.println("\nEntrez le Nom de famille:");
+			System.out.println("\nEntrez le Prénom:");
 			ps.setString(1, x2.nextLine());
-			System.out.println("\nEntrez le prénom:");
+			System.out.println("\nEntrez le Nom de famille:");
 			ps.setString(2, x2.nextLine());
 			System.out.println("\nEntrez le mot de passe par défaut:");
 			ps.setString(3, x2.nextLine());
